@@ -1,0 +1,159 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to right, #f8fafc, #e0f2fe);
+  color: #1e293b;
+}
+
+.container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 2rem;
+}
+
+h1, h2 {
+  color: #0f172a;
+}
+
+.home-grid {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 2rem;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .home-grid {
+    flex-direction: row;
+    text-align: left;
+    justify-content: space-between;
+  }
+}
+
+.profile-photo-section {
+  position: relative;
+}
+
+.profile-photo {
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  border: 6px solid #3b82f6;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  transition: transform 0.4s ease;
+  z-index: 2;
+  position: relative;
+}
+
+.profile-photo:hover {
+  transform: scale(1.08);
+}
+
+.profile-photo-section::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(circle, rgba(59,130,246,0.4) 0%, transparent 70%);
+  border-radius: 50%;
+  z-index: 1;
+  animation: pulse 3s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.1); opacity: 0.4; }
+  100% { transform: scale(1); opacity: 0.6; }
+}
+
+.text h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .text h1 {
+    font-size: 2.8rem;
+  }
+}
+
+.subtext {
+  font-size: 1.2rem;
+  color: #475569;
+}
+
+section {
+  margin: 3rem 0;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card a {
+  display: inline-block;
+  margin-top: 0.75rem;
+  color: #3b82f6;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 0.75rem;
+}
+
+a.button {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background: #3b82f6;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+a.button:hover {
+  background: #2563eb;
+}
+
+.contact-icons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  font-size: 2rem;
+  margin-top: 1rem;
+}
+
+.contact-icons a {
+  color: #334155;
+  transition: transform 0.3s, color 0.3s;
+}
+
+.contact-icons a:hover {
+  transform: scale(1.3);
+  color: #3b82f6;
+}
