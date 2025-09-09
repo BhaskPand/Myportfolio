@@ -1,101 +1,332 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Portfolio - Bhaskar Pandit M N</title>
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Bhaskar Pandit M N</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Load Poppins font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Link to external stylesheet -->
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-  <main class="container">
-    <!-- Home -->
-    <section class="home">
-      <div class="home-grid">
-        <div class="text">
-          <h1>Hi, I'm Bhaskar Pandit</h1>
-          <p class="subtext">Aspiring Software Engineer | Web Developer | Cyber Security Enthusiast | Engineering Student</p>
+
+<body class="text-gray-800">
+
+    <!-- Navigation Bar -->
+    <nav class="sticky top-0 z-50 bg-gray-900 shadow-lg text-white">
+        <div class="container mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center">
+            <a href="#home" class="text-2xl font-bold mb-2 sm:mb-0">Bhaskar Pandit</a>
+            <div class="space-x-4 sm:space-x-8 text-lg flex items-center">
+                <a href="#home" class="hover:text-amber-400 transition duration-300">Home</a>
+                <a href="#about" class="hover:text-amber-400 transition duration-300">About</a>
+                <a href="#moments" class="hover:text-amber-400 transition duration-300">Moments</a>
+                <a href="#projects" class="hover:text-amber-400 transition duration-300">Projects</a>
+                <a href="#skills" class="hover:text-amber-400 transition duration-300">Skills</a>
+                <a href="#experience" class="hover:text-amber-400 transition duration-300">Experience</a>
+                <a href="#contact" class="hover:text-amber-400 transition duration-300">Contact</a>
+            </div>
         </div>
-        <div class="profile-photo-section">
-          <img src="profile-photo.jpg" alt="Bhaskar Pandit" class="profile-photo" />
+    </nav>
+
+    <main class="container mx-auto px-4">
+        <!-- Home Section -->
+        <section id="home" class="flex flex-col lg:flex-row items-center justify-center lg:justify-between py-12 lg:py-24 space-y-8 lg:space-y-0 lg:space-x-12 min-h-screen">
+            <div class="text-center lg:text-left">
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-gray-900 leading-tight">
+                    Hi, I'm <span class="text-amber-600">Bhaskar Pandit</span>
+                </h1>
+                <p class="mt-4 text-lg sm:text-xl text-gray-600 max-w-2xl">
+                    Aspiring Software Engineer | Web Developer | Cyber Security Enthusiast | Engineering Student
+                </p>
+                <a href="#projects" class="mt-8 inline-block px-8 py-3 bg-amber-600 text-white font-semibold rounded-full shadow-lg hover:bg-amber-700 transition transform hover:scale-105">
+                    View My Projects
+                </a>
+            </div>
+            <div class="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96">
+                <div class="absolute inset-0 bg-amber-600 rounded-full opacity-75 animate-pulse"></div>
+                <img src="https://placehold.co/500x500/E5A84B/FFFFFF?text=Bhaskar" alt="Bhaskar Pandit"
+                    class="relative w-full h-full rounded-full object-cover shadow-2xl ring-4 ring-white ring-offset-4 ring-offset-gray-100" />
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="bg-white rounded-xl shadow-lg p-8 md:p-12 mb-8">
+            <h2 class="text-3xl sm:text-4xl font-bold text-center mb-8 text-gray-900">About Me</h2>
+            <div class="prose max-w-none text-gray-700 leading-relaxed">
+                <p>
+                    I’m currently immersing myself in Information Science Engineering at APSCE, where learning feels like a grand adventure. Beyond the classroom, I proudly lead as the captain of our college cricket team—a role that’s gifted me unforgettable moments on university fields and the thrill of teamwork at its best.
+                </p>
+                <p>
+                    My passion lies in crafting software solutions that truly make a difference. I’m endlessly curious about digital marketing and the world of defense technologies, always seeking new ways to combine creativity with impact.
+                </p>
+                <p>
+                    When I'm not coding or on the cricket pitch, you’ll find me exploring the ups and downs of the financial markets—trading both challenges and opportunities. Music is my escape and inspiration; it keeps my creativity flowing and my spirit grounded.
+                </p>
+                <p>
+                    Above all, I believe in chasing dreams with heart, learning from every experience, and spreading positivity along the way. Let’s build, explore, and make a difference—together!
+                </p>
+            </div>
+        </section>
+
+        <!-- Moments Section (Carousel) -->
+        <section id="moments" class="mb-8 bg-gray-100 rounded-xl shadow-lg p-8 md:p-12">
+            <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12 text-gray-900">Moments: Capturing Memories</h2>
+            <div class="carousel-container">
+                <img id="carouselImage" src="" alt="Moment" class="carousel-image active rounded-lg">
+                
+                <button id="prevBtn" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-3 rounded-full opacity-75 hover:opacity-100 transition-opacity z-10">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button id="nextBtn" class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-3 rounded-full opacity-75 hover:opacity-100 transition-opacity z-10">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+
+                <div id="carouselIndicators" class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2"></div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="mb-8">
+            <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12 text-gray-900">Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div
+                    class="bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Smart Glasses for Visually Impaired</h3>
+                    <p class="text-gray-600 mb-4">A wearable assistive device using ESP32, ultrasonic sensors, and audio feedback to help visually impaired users detect obstacles in real-time.</p>
+                    <a href="https://github.com/BhaskPand/SmartGalass"
+                        class="inline-block bg-gray-800 text-white text-sm font-semibold py-2 px-4 rounded-full shadow-md hover:bg-gray-700 transition transform hover:scale-105"
+                        target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-github mr-2"></i>View on GitHub
+                    </a>
+                </div>
+                <div
+                    class="bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Portfolio Website</h3>
+                    <p class="text-gray-600 mb-4">A personal portfolio website using Next.js and Tailwind CSS to showcase skills, projects, and contact details.</p>
+                    <a href="https://github.com/BhaskPand/Myportfolio.git"
+                        class="inline-block bg-gray-800 text-white text-sm font-semibold py-2 px-4 rounded-full shadow-md hover:bg-gray-700 transition transform hover:scale-105"
+                        target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-github mr-2"></i>View on GitHub
+                    </a>
+                </div>
+                <div
+                    class="bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">ExamsAI – Competitive Exams Hub</h3>
+                    <p class="text-gray-600 mb-4">Built a full-stack AI-integrated web application as part of the Full Stack Developer Assessment by Bhatiyani Astute Intelligence Pvt. Ltd.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <a href="https://exams-ai-bhatiyani.vercel.app/"
+                            class="inline-block bg-amber-600 text-white text-sm font-semibold py-2 px-4 rounded-full shadow-md hover:bg-amber-700 transition transform hover:scale-105"
+                            target="_blank" rel="noopener noreferrer">
+                            <i class="fas fa-external-link-alt mr-2"></i>Live Demo
+                        </a>
+                        <a href="https://github.com/BhaskPand/ExamsAI_bhatiyani"
+                            class="inline-block bg-gray-800 text-white text-sm font-semibold py-2 px-4 rounded-full shadow-md hover:bg-gray-700 transition transform hover:scale-105"
+                            target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-github mr-2"></i>View on GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="bg-gray-100 rounded-xl shadow-lg p-8 md:p-12 mb-8">
+            <h2 class="text-3xl sm:text-4xl font-bold text-center mb-8 text-gray-900">Skills</h2>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 text-center">
+                <div class="bg-white rounded-lg p-4 shadow-md flex flex-col items-center">
+                    <i class="fas fa-code text-3xl text-gray-600 mb-2"></i>
+                    <p class="font-semibold text-gray-900">Languages</p>
+                    <span class="text-sm text-gray-500">C, Java, Python, JavaScript</span>
+                </div>
+                <div class="bg-white rounded-lg p-4 shadow-md flex flex-col items-center">
+                    <i class="fas fa-tools text-3xl text-gray-600 mb-2"></i>
+                    <p class="font-semibold text-gray-900">Tools</p>
+                    <span class="text-sm text-gray-500">Git, VS Code, Linux</span>
+                </div>
+                <div class="bg-white rounded-lg p-4 shadow-md flex flex-col items-center">
+                    <i class="fas fa-cubes text-3xl text-gray-600 mb-2"></i>
+                    <p class="font-semibold text-gray-900">Frameworks</p>
+                    <span class="text-sm text-gray-500">React, Next.js, Tailwind CSS</span>
+                </div>
+                <div class="bg-white rounded-lg p-4 shadow-md flex flex-col items-center">
+                    <i class="fas fa-users text-3xl text-gray-600 mb-2"></i>
+                    <p class="font-semibold text-gray-900">Soft Skills</p>
+                    <span class="text-sm text-gray-500">Leadership, Teamwork, Communication</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="mb-8">
+            <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12 text-gray-900">Experience</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Placeholder for Experience 1 -->
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <h3 class="text-xl font-bold text-gray-900">Software Engineering Intern</h3>
+                    <p class="text-gray-600 font-semibold mb-1">Next gen Edunet</p>
+                    <p class="text-sm text-gray-500 mb-4">October 2024 - November 2024</p>
+                    <p class="text-gray-700">
+                        Assisted in the development of a new web application feature using React and Node.js. 
+                        Collaborated with a team of engineers to write clean, maintainable code and participated in daily stand-ups and code reviews.
+                    </p>
+                </div>
+                <!-- Placeholder for Experience 2 -->
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <h3 class="text-xl font-bold text-gray-900">Web Development Trainee</h3>
+                    <p class="text-gray-600 font-semibold mb-1">Digital Agency</p>
+                    <p class="text-sm text-gray-500 mb-4">January 2023 - May 2023</p>
+                    <p class="text-gray-700">
+                        Learned modern web development practices including responsive design and API integration. 
+                        Contributed to the front-end development of client websites using HTML, CSS, and JavaScript.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resume Section -->
+        <section id="resume" class="flex flex-col items-center justify-center text-center p-8 md:p-12 mb-8">
+            <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">Resume</h2>
+            <p class="text-lg text-gray-700 mb-6">Download my full resume to learn more about my experience and skills.</p>
+            <a href="https://bhaskpand.github.io/resume.pdf"
+                class="inline-block px-8 py-3 bg-amber-600 text-white font-semibold rounded-full shadow-lg hover:bg-amber-700 transition transform hover:scale-105"
+                target="_blank" rel="noopener noreferrer">
+                <i class="fas fa-file-download mr-2"></i>Download Resume (PDF)
+            </a>
+        </section>
+
+        <!-- Send Me a Message Section -->
+        <section id="message" class="bg-gray-100 rounded-xl shadow-lg p-8 md:p-12 mb-8">
+            <h2 class="text-3xl sm:text-4xl font-bold text-center mb-8 text-gray-900">Send Me a Message</h2>
+            <p class="text-lg text-gray-700 text-center mb-8 max-w-2xl mx-auto">
+                Have a question or want to collaborate? I'd love to hear from you! Please fill out the form below.
+            </p>
+            <form action="mailto:bhaskarpanditmn@gmail.com" method="post" enctype="text/plain" class="max-w-xl mx-auto space-y-6">
+                <div>
+                    <label for="name" class="block text-gray-700 font-semibold mb-2">Name</label>
+                    <input type="text" id="name" name="name" class="w-full px-4 py-3 rounded-lg shadow-sm border border-gray-300 focus:outline-none focus:ring-2 focus:ring-amber-500" placeholder="Your Name" required>
+                </div>
+                <div>
+                    <label for="email" class="block text-gray-700 font-semibold mb-2">Email</label>
+                    <input type="email" id="email" name="email" class="w-full px-4 py-3 rounded-lg shadow-sm border border-gray-300 focus:outline-none focus:ring-2 focus:ring-amber-500" placeholder="your.email@example.com" required>
+                </div>
+                <div>
+                    <label for="message" class="block text-gray-700 font-semibold mb-2">Message</label>
+                    <textarea id="message" name="message" rows="6" class="w-full px-4 py-3 rounded-lg shadow-sm border border-gray-300 focus:outline-none focus:ring-2 focus:ring-amber-500 resize-none" placeholder="Write your message here..." required></textarea>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="px-8 py-3 bg-amber-600 text-white font-semibold rounded-full shadow-lg hover:bg-amber-700 transition transform hover:scale-105">
+                        Send Message
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="bg-white rounded-xl shadow-lg p-8 md:p-12 mb-8 text-center">
+            <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">Contact</h2>
+            <p class="text-lg text-gray-700 mb-8">Feel free to connect with me on any of these platforms!</p>
+            <div class="flex justify-center space-x-6 sm:space-x-8 text-4xl text-gray-600">
+                <a href="mailto:bhaskarpanditmn@gmail.com" aria-label="Email" class="hover:text-amber-600 transition duration-300 transform hover:scale-110">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/bhaskar-pandit-67401a29b" target="_blank" aria-label="LinkedIn"
+                    class="hover:text-amber-600 transition duration-300 transform hover:scale-110">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/BhaskPand" target="_blank" aria-label="GitHub"
+                    class="hover:text-amber-600 transition duration-300 transform hover:scale-110">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.instagram.com/bhaskar_pandit__" target="_blank" aria-label="Instagram"
+                    class="hover:text-amber-600 transition duration-300 transform hover:scale-110">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white text-center py-6 mt-12">
+        <div class="container mx-auto px-4">
+            <p>&copy; 2024 Bhaskar Pandit M N. All Rights Reserved.</p>
         </div>
-      </div>
-    </section>
+    </footer>
+    <script>
+        const images = [
+            "https://placehold.co/600x400/535C7A/FFFFFF?text=Cricket+Match",
+            "https://placehold.co/600x400/779872/FFFFFF?text=Friends+Hangout",
+            "https://placehold.co/600x400/965D69/FFFFFF?text=Coding+Session",
+            "https://placehold.co/600x400/6A7B8E/FFFFFF?text=College+Trip",
+            "https://placehold.co/600x400/4B5569/FFFFFF?text=Project+Work",
+            "https://placehold.co/600x400/805D78/FFFFFF?text=Music+Time",
+            "https://placehold.co/600x400/5B8B77/FFFFFF?text=Hackathon",
+            "https://placehold.co/600x400/7A6C5D/FFFFFF?text=Trading+Desk"
+        ];
+        
+        let currentIndex = 0;
+        const carouselImage = document.getElementById('carouselImage');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const indicatorsContainer = document.getElementById('carouselIndicators');
 
-    <!-- About Me -->
-    <section>
-      <h2>About Me</h2>
-      <p>
-        I’m currently immersing myself in Information Science Engineering at APSCE, where learning feels like a grand adventure. Beyond the classroom, I proudly lead as the captain of our college cricket team—a role that’s gifted me unforgettable moments on university fields and the thrill of teamwork at its best.
+        function updateCarousel() {
+            carouselImage.src = images[currentIndex];
+            updateIndicators();
+        }
 
-My passion lies in crafting software solutions that truly make a difference. I’m endlessly curious about digital marketing and the world of defense technologies, always seeking new ways to combine creativity with impact.
+        function updateIndicators() {
+            indicatorsContainer.innerHTML = '';
+            images.forEach((_, index) => {
+                const dot = document.createElement('span');
+                dot.classList.add('w-3', 'h-3', 'rounded-full', 'bg-gray-400', 'cursor-pointer', 'transition-colors', 'duration-300');
+                if (index === currentIndex) {
+                    dot.classList.add('bg-amber-600');
+                }
+                dot.addEventListener('click', () => {
+                    currentIndex = index;
+                    updateCarousel();
+                });
+                indicatorsContainer.appendChild(dot);
+            });
+        }
 
-When I'm not coding or on the cricket pitch, you’ll find me exploring the ups and downs of the financial markets—trading both challenges and opportunities. Music is my escape and inspiration; it keeps my creativity flowing and my spirit grounded.
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            updateCarousel();
+        });
 
-Above all, I believe in chasing dreams with heart, learning from every experience, and spreading positivity along the way. Let’s build, explore, and make a difference—together!
-      </p>
-    </section>
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % images.length;
+            updateCarousel();
+        });
 
-    <!-- Projects -->
-    <section>
-      <h2>Projects</h2>
-      <div class="card-grid">
-        <div class="card">
-          <h3>Smart Glasses for Visually Impaired</h3>
-          <p>A wearable assistive device using ESP32, ultrasonic sensors, and audio feedback to help visually impaired users detect obstacles in real-time.</p>
-          <div class="project-links">
-            <a href="https://github.com/BhaskPand/SmartGalass" class="button" target="_blank" rel="noopener noreferrer">View on GitHub</a>
-          </div>
-        </div>
-        <div class="card">
-          <h3>Portfolio Website</h3>
-          <p>A personal portfolio website using Next.js and Tailwind CSS to showcase skills, projects, and contact details.</p>
-          <div class="project-links">
-            <a href="https://github.com/BhaskPand/Myportfolio.git" class="button" target="_blank" rel="noopener noreferrer">View on GitHub</a>
-          </div>
-        </div>
-        <div class="card">
-          <h3>ExamsAI – Competitive Exams Hub</h3>
-          <p>Built a full-stack AI-integrated web application as part of the Full Stack Developer Assessment by Bhatiyani Astute Intelligence Pvt. Ltd.</p>
-          <div class="project-links">
-            <a href="https://exams-ai-bhatiyani.vercel.app/" class="button demo" target="_blank" rel="noopener noreferrer">Live Demo</a>
-            <a href="https://github.com/BhaskPand/ExamsAI_bhatiyani" class="button github" target="_blank" rel="noopener noreferrer">View on GitHub</a>
-          </div>
-        </div>
-      </div>
-    </section>
+        // Autoplay the carousel
+        let autoPlayInterval = setInterval(() => {
+            currentIndex = (currentIndex + 1) % images.length;
+            updateCarousel();
+        }, 3000); // Change image every 3 seconds
 
-    <!-- Skills -->
-    <section>
-      <h2>Skills</h2>
-      <ul>
-        <li><strong>Languages:</strong> C, Java, Python, JavaScript</li>
-        <li><strong>Tools:</strong> Git, VS Code, Android studio, Linux</li>
-        <li><strong>Frameworks:</strong> React, Next.js, Tailwind CSS, MERN</li>
-        <li><strong>Soft Skills:</strong> Leadership, Communication, Teamwork</li>
-      </ul>
-    </section>
+        // Stop and restart autoplay on hover
+        const carouselContainer = document.querySelector('.carousel-container');
+        carouselContainer.addEventListener('mouseenter', () => {
+            clearInterval(autoPlayInterval);
+        });
+        carouselContainer.addEventListener('mouseleave', () => {
+            autoPlayInterval = setInterval(() => {
+                currentIndex = (currentIndex + 1) % images.length;
+                updateCarousel();
+            }, 3000);
+        });
 
-    <!-- Resume -->
-    <section>
-      <h2>Resume</h2>
-      <a href="https://bhaskpand.github.io/resume.pdf" class="button" target="_blank" rel="noopener noreferrer">Download Resume (PDF)</a>
-    </section>
-
-    <!-- Contact -->
-    <section>
-      <h2>Contact</h2>
-      <div class="contact-icons">
-        <a href="mailto:bhaskarpanditmn@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
-        <a href="https://www.linkedin.com/in/bhaskar-pandit-67401a29b" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        <a href="https://github.com/BhaskPand" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-        <a href="https://www.instagram.com/bhaskar_pandit__" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-      </div>
-    </section>
-  </main>
+        // Initialize the carousel
+        updateCarousel();
+    </script>
 </body>
 </html>
-
 
