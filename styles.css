@@ -1,318 +1,55 @@
-/* Reset & base */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
 body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #e0f2fe, #bae6fd);
-  color: #1e293b;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  line-height: 1.6;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f7fafc;
 }
 
-/* Container */
-.container {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 2.5rem 1.5rem;
+html {
+    scroll-behavior: smooth;
 }
 
-/* Headings */
-h1, h2 {
-  color: #0f172a;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  margin-bottom: 1rem;
-  line-height: 1.2;
+/* Custom scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
 }
 
-/* Home grid */
-.home-grid {
-  display: flex;
-  flex-direction: column-reverse;
-  align-items: center;
-  gap: 2.5rem;
-  text-align: center;
+::-webkit-scrollbar-track {
+    background: #cbd5e1;
 }
 
-@media (min-width: 768px) {
-  .home-grid {
-    flex-direction: row;
-    text-align: left;
-    justify-content: space-between;
-    align-items: center;
-    gap: 3rem;
-  }
+::-webkit-scrollbar-thumb {
+    background-color: #4b5563;
+    border-radius: 4px;
 }
 
-/* Profile photo styling */
-.profile-photo-section {
-  position: relative;
-}
-
-.profile-photo {
-  width: 260px;
-  height: 260px;
-  border-radius: 50%;
-  border: 6px solid #3b82f6;
-  box-shadow:
-    0 4px 8px rgba(59, 130, 246, 0.3),
-    0 12px 25px rgba(0, 0, 0, 0.12);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-  position: relative;
-  z-index: 2;
-  cursor: pointer;
-}
-
-.profile-photo:hover,
-.profile-photo:focus {
-  transform: scale(1.1);
-  box-shadow:
-    0 8px 20px rgba(59, 130, 246, 0.6),
-    0 20px 40px rgba(0, 0, 0, 0.15);
-  outline: none;
-}
-
-.profile-photo-section::before {
-  content: "";
-  position: absolute;
-  top: -22px;
-  left: -22px;
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(circle, rgba(59,130,246,0.35) 0%, transparent 65%);
-  border-radius: 50%;
-  z-index: 1;
-  animation: pulse 3s infinite ease-in-out;
-}
-
-/* Pulse animation for photo */
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 0.55;
-  }
-  50% {
-    transform: scale(1.12);
-    opacity: 0.35;
-  }
-}
-
-/* Text styles */
-.text h1 {
-  font-size: 2.6rem;
-  font-weight: 800;
-  margin-bottom: 0.6rem;
-  color: #334155;
-}
-
-@media (min-width: 768px) {
-  .text h1 {
-    font-size: 3.4rem;
-  }
-}
-
-.subtext {
-  font-size: 1.25rem;
-  color: #475569;
-  font-weight: 500;
-  max-width: 450px;
-  margin: 0 auto;
-}
-
-@media (min-width: 768px) {
-  .subtext {
-    margin: 0;
-  }
-}
-
-/* Section spacing */
 section {
-  margin: 4rem 0;
+    padding: 4rem 1rem;
 }
 
-/* Card grid */
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2.5rem;
+.gradient-bg {
+    background-image: linear-gradient(to right, #64748b, #475569);
 }
 
-/* Individual cards */
-.card {
-  background: #ffffff;
-  padding: 2rem 2.2rem;
-  border-radius: 1rem;
-  box-shadow:
-    0 8px 24px rgba(0, 0, 0, 0.08);
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  cursor: default;
+.carousel-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
-.card:hover,
-.card:focus-within {
-  transform: translateY(-8px);
-  box-shadow:
-    0 14px 40px rgba(59, 130, 246, 0.25);
-  outline: none;
+.carousel-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: opacity 0.5s ease-in-out;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
-/* Card headings */
-.card h3 {
-  font-weight: 700;
-  margin-bottom: 0.75rem;
-  color: #1e293b;
-  font-size: 1.4rem;
-}
-
-/* Project description */
-.card p {
-  flex-grow: 1;
-  color: #475569;
-  line-height: 1.5;
-  font-size: 1rem;
-  margin-bottom: 1.2rem;
-}
-
-/* Card links */
-.card a {
-  display: inline-block;
-  margin-top: 0.75rem;
-  color: #3b82f6;
-  text-decoration: none;
-  font-weight: 600;
-  position: relative;
-  transition: color 0.25s ease;
-}
-
-.card a:not(:last-child) {
-  margin-right: 1.2rem;
-}
-
-.card a::after {
-  content: "→";
-  margin-left: 6px;
-  transition: margin-left 0.3s ease;
-}
-
-.card a:hover,
-.card a:focus {
-  color: #2563eb;
-  outline: none;
-}
-
-.card a:hover::after,
-.card a:focus::after {
-  margin-left: 10px;
-}
-
-/* Skills list */
-ul {
-  list-style: none;
-  padding: 0;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-li {
-  margin-bottom: 0.75rem;
-  font-weight: 500;
-  color: #334155;
-  font-size: 1.125rem;
-  position: relative;
-  padding-left: 25px;
-}
-
-/* Custom bullet */
-li::before {
-  content: '▹';
-  color: #3b82f6;
-  position: absolute;
-  left: 0;
-  top: 0;
-  font-weight: 900;
-}
-
-/* Button styles */
-a.button {
-  display: inline-block;
-  margin-top: 1.2rem;
-  padding: 0.85rem 2.25rem;
-  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-  color: white;
-  border-radius: 10px;
-  font-weight: 700;
-  text-decoration: none;
-  box-shadow: 0 6px 15px rgba(59, 130, 246, 0.4);
-  transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-  user-select: none;
-}
-
-a.button:hover,
-a.button:focus {
-  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
-  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.65);
-  transform: translateY(-3px);
-  outline: none;
-}
-
-/* Contact icons container */
-.contact-icons {
-  display: flex;
-  justify-content: center;
-  gap: 2.5rem;
-  font-size: 2.5rem;
-  margin-top: 1.5rem;
-}
-
-/* Contact icon styles */
-.contact-icons a {
-  color: #475569;
-  transition:
-    transform 0.35s ease,
-    color 0.35s ease,
-    filter 0.35s ease;
-  position: relative;
-  user-select: none;
-  outline-offset: 4px;
-}
-
-.contact-icons a:hover,
-.contact-icons a:focus {
-  transform: scale(1.35) rotate(8deg);
-  color: #3b82f6;
-  filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.5));
-  outline: none;
-}
-
-/* Accessibility: keyboard focus visible */
-a:focus-visible,
-button:focus-visible {
-  outline: 3px solid #3b82f6;
-  outline-offset: 3px;
-}
-
-/* Responsive typography tweaks */
-@media (max-width: 480px) {
-  .text h1 {
-    font-size: 2rem;
-  }
-  
-  .subtext {
-    font-size: 1rem;
-  }
-
-  .card-grid {
-    grid-template-columns: 1fr;
-  }
+.carousel-image.active {
+    opacity: 1;
+    position: relative;
 }
