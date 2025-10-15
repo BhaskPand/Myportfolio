@@ -13,8 +13,40 @@
     <!-- Load Poppins font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
-    <!-- Link to external custom stylesheet (styles.css) -->
-    <link rel="stylesheet" href="styles.css">
+    <!-- Styles for the Carousel & Project Video -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            background-color: #f7f7f7;
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .carousel-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Specific style for the video preview in the Project section (now unused, but kept for safety) */
+        .project-video-preview {
+            width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            margin-bottom: 0.75rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </head>
 
 <body class="text-gray-800">
@@ -80,21 +112,27 @@
             </div>
         </section>
 
-        <!-- Moments Section (Carousel) -->
+        <!-- Moments Section (Image Carousel) -->
         <section id="moments" class="mb-8 bg-gray-100 rounded-xl shadow-lg p-8 md:p-12">
             <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12 text-gray-900">Moments: Capturing Memories</h2>
-            <div class="carousel-container">
+            <div class="carousel-container relative">
+                <!-- Carousel Image -->
                 <img id="carouselImage" src="" alt="Moment" class="carousel-image active rounded-lg">
 
+                <!-- Previous Button -->
                 <button id="prevBtn"
-                    class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-3 rounded-full opacity-75 hover:opacity-100 transition-opacity z-10">
+                    class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-3 rounded-full opacity-75 hover:opacity-100 transition-opacity z-10"
+                    aria-label="Previous Image">
                     <i class="fas fa-chevron-left"></i>
                 </button>
+                <!-- Next Button -->
                 <button id="nextBtn"
-                    class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-3 rounded-full opacity-75 hover:opacity-100 transition-opacity z-10">
+                    class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-3 rounded-full opacity-75 hover:opacity-100 transition-opacity z-10"
+                    aria-label="Next Image">
                     <i class="fas fa-chevron-right"></i>
                 </button>
 
+                <!-- Indicators -->
                 <div id="carouselIndicators"
                     class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2"></div>
             </div>
@@ -104,6 +142,25 @@
         <section id="projects" class="mb-8">
             <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12 text-gray-900">Projects</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- NEW PROJECT: Smart Attendance System -->
+                <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300">
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">🧠 Smart Attendance System</h3>
+                    <p class="text-gray-600 mb-4">An AI-powered attendance management application that automatically marks student attendance using facial recognition through a live camera feed. This project is built using Python, Flask, OpenCV, and MediaPipe, offering a seamless, contactless attendance solution.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <a href="https://smart-attendance-system-mc31.onrender.com"
+                            class="inline-block bg-amber-600 text-white text-sm font-semibold py-2 px-4 rounded-full shadow-md hover:bg-amber-700 transition transform hover:scale-105"
+                            target="_blank" rel="noopener noreferrer">
+                            <i class="fas fa-external-link-alt mr-2"></i>View Demo
+                        </a>
+                        <a href="https://github.com/BhaskPand/Smart-Attendance-System.git"
+                            class="inline-block bg-gray-800 text-white text-sm font-semibold py-2 px-4 rounded-full shadow-md hover:bg-gray-700 transition transform hover:scale-105"
+                            target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-github mr-2"></i>View on GitHub
+                        </a>
+                    </div>
+                </div>
+
                 <!-- Project 1: Smart Glasses for Visually Impaired -->
                 <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300">
                     <h3 class="text-xl font-bold text-gray-900 mb-2">Smart Glasses for Visually Impaired</h3>
@@ -115,7 +172,7 @@
                     </a>
                 </div>
 
-                <!-- NEW PROJECT: Prajnā AI -->
+                <!-- Project 2: Prajnā AI (Smart Glasses & Stick) -->
                 <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300">
                     <h3 class="text-xl font-bold text-gray-900 mb-2">Prajñā AI (Smart Glasses & Stick)</h3>
                     <p class="text-gray-600 mb-4">A groundbreaking, dual-purpose assistive technology combining ESP32 with AI for real-time object detection (Smart Glasses) and navigation assistance (Smart Stick).</p>
@@ -125,8 +182,8 @@
                         <i class="fab fa-github mr-2"></i>View on GitHub
                     </a>
                 </div>
-
-                <!-- Project 2: Portfolio Website -->
+                
+                <!-- Project 3: Portfolio Website -->
                 <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300">
                     <h3 class="text-xl font-bold text-gray-900 mb-2">Portfolio Website</h3>
                     <p class="text-gray-600 mb-4">A personal portfolio website using Next.js and Tailwind CSS to showcase skills, projects, and contact details.</p>
@@ -137,7 +194,7 @@
                     </a>
                 </div>
 
-                <!-- Project 3: ExamsAI – Competitive Exams Hub -->
+                <!-- Project 4: ExamsAI – Competitive Exams Hub -->
                 <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300">
                     <h3 class="text-xl font-bold text-gray-900 mb-2">ExamsAI – Competitive Exams Hub</h3>
                     <p class="text-gray-600 mb-4">Built a full-stack AI-integrated web application as part of the Full Stack Developer Assessment by Bhatiyani Astute Intelligence Pvt. Ltd.</p>
@@ -154,6 +211,7 @@
                         </a>
                     </div>
                 </div>
+                
             </div>
         </section>
 
@@ -174,7 +232,12 @@
                 <div class="bg-white rounded-lg p-4 shadow-md flex flex-col items-center">
                     <i class="fas fa-cubes text-3xl text-gray-600 mb-2"></i>
                     <p class="font-semibold text-gray-900">Frameworks</p>
-                    <span class="text-sm text-gray-500">React, Next.js, Tailwind CSS</span>
+                    <span class="text-sm text-gray-500">React, Next.js, Tailwind CSS, Flask</span>
+                </div>
+                <div class="bg-white rounded-lg p-4 shadow-md flex flex-col items-center">
+                    <i class="fas fa-robot text-3xl text-gray-600 mb-2"></i>
+                    <p class="font-semibold text-gray-900">AI/CV Libraries</p>
+                    <span class="text-sm text-gray-500">OpenCV, MediaPipe</span>
                 </div>
                 <div class="bg-white rounded-lg p-4 shadow-md flex flex-col items-center">
                     <i class="fas fa-users text-3xl text-gray-600 mb-2"></i>
@@ -288,7 +351,7 @@
         </div>
     </footer>
     <script>
-        // JavaScript for the Moments Carousel
+        // JavaScript for the Moments Carousel (Restored)
         const images = [
             "https://placehold.co/600x400/535C7A/FFFFFF?text=Cricket+Match",
             "https://placehold.co/600x400/779872/FFFFFF?text=Friends+Hangout",
@@ -361,4 +424,3 @@
 </body>
 
 </html>
-
