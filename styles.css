@@ -1,11 +1,67 @@
 /* General Body and HTML Setup */
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #f7fafc;
+    background-color: var(--app-bg-fallback);
+    color: var(--text);
 }
 
 html {
     scroll-behavior: smooth;
+}
+
+/* Design tokens */
+:root {
+    /* LIGHT THEME (default) */
+    --app-bg-fallback: #f7fafc;
+    --bg-start: #f7fafc;
+    --bg-mid: #eef2ff; /* indigo-50 */
+    --bg-end: #ffffff;
+    --primary: #7c3aed; /* violet-600 */
+    --primary-600: #6d28d9;
+    --text: #0f172a; /* slate-900 */
+    --muted: #475569; /* slate-600 */
+    --card: rgba(255,255,255,0.7);
+    --card-border: rgba(2,6,23,0.08);
+    --glass: rgba(255,255,255,0.75);
+    --shadow-strong: 0 20px 40px rgba(2,6,23,0.08);
+}
+
+.dark {
+    /* DARK THEME */
+    --app-bg-fallback: #0b1021;
+    --bg-start: #0b1021;
+    --bg-mid: #101936;
+    --bg-end: #0b1021;
+    --primary: #f59e0b; /* amber-500 */
+    --primary-600: #d97706;
+    --text: #e5e7eb;
+    --muted: #9ca3af;
+    --card: rgba(255,255,255,0.06);
+    --card-border: rgba(255,255,255,0.12);
+    --glass: rgba(255,255,255,0.08);
+    --shadow-strong: 0 20px 40px rgba(0,0,0,0.35);
+}
+
+/* Background gradient canvas */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(1200px 800px at 10% -10%, rgba(124, 58, 237, 0.14), transparent 60%),
+                radial-gradient(1000px 700px at 110% 10%, rgba(59, 130, 246, 0.12), transparent 60%),
+                radial-gradient(800px 600px at 50% 120%, rgba(236, 72, 153, 0.10), transparent 60%),
+                linear-gradient(180deg, var(--bg-start), var(--bg-mid) 40%, var(--bg-end));
+    z-index: -2;
+}
+
+/* Subtle grain */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="0.04"/></svg>');
+    pointer-events: none;
+    z-index: -1;
 }
 
 /* Custom scrollbar styling */
@@ -38,7 +94,7 @@ section {
     position: relative;
     overflow: hidden;
     border-radius: 1rem;
-    max-width: 800px;
+    max-width: 960px;
     margin: 0 auto;
     /* Tailwind equivalent: shadow-xl */
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
@@ -65,4 +121,116 @@ section {
     position: absolute; 
     top: 0;
     left: 0;
+}
+
+/* Glass card */
+.glass {
+    background: var(--glass);
+    backdrop-filter: saturate(140%) blur(12px);
+    -webkit-backdrop-filter: saturate(140%) blur(12px);
+    border: 1px solid var(--card-border);
+    box-shadow: var(--shadow-strong);
+    color: var(--text);
+}
+
+/* Fancy underline for headings */
+.headline {
+    position: relative;
+}
+.headline::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -0.75rem;
+    width: 96px;
+    height: 4px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, rgba(245,158,11,0.0), rgba(245,158,11,1), rgba(245,158,11,0.0));
+}
+
+/* Reveal on scroll */
+.reveal { opacity: 0; transform: translateY(24px) scale(0.98); transition: opacity .7s ease, transform .7s ease; }
+.reveal-visible { opacity: 1; transform: translateY(0) scale(1); }
+
+/* Ensure readable copy text in both themes */
+.prose, .prose p, .prose li, .prose span { color: var(--text); }
+
+/* Magnetic button hover lift */
+.btn-cta {
+    transform: translateZ(0);
+    transition: transform .25s ease, box-shadow .25s ease;
+    box-shadow: 0 10px 24px rgba(245, 158, 11, 0.25);
+}
+.btn-cta:hover { transform: translateY(-2px) scale(1.02); }
+.btn-cta:active { transform: translateY(0) scale(0.99); }
+
+/* Gradient text utility */
+.text-gradient {
+    background: linear-gradient(90deg, #f59e0b, #f43f5e, #3b82f6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* Floating blob decorations */
+.blob {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(30px);
+    opacity: 0.35;
+    animation: float 14s ease-in-out infinite;
+}
+.blob--amber { background: radial-gradient(circle at 30% 30%, rgba(124,58,237,.55), rgba(124,58,237,.05)); }
+.blob--pink { background: radial-gradient(circle at 30% 30%, rgba(236,72,153,.45), rgba(236,72,153,.05)); animation-duration: 18s; }
+.blob--blue { background: radial-gradient(circle at 30% 30%, rgba(59,130,246,.45), rgba(59,130,246,.05)); animation-duration: 20s; }
+
+@keyframes float {
+    0% { transform: translate3d(0,0,0) scale(1); }
+    50% { transform: translate3d(20px, -30px, 0) scale(1.06); }
+    100% { transform: translate3d(0,0,0) scale(1); }
+}
+
+/* Project card hover tilt */
+.tilt {
+    transition: transform .2s ease, box-shadow .2s ease;
+    transform-style: preserve-3d;
+}
+.tilt:hover {
+    transform: perspective(900px) rotateX(2deg) rotateY(-2deg) translateY(-2px);
+    box-shadow: 0 24px 48px rgba(0,0,0,0.25);
+}
+
+/* Timeline style for experience */
+.timeline {
+    position: relative;
+}
+.timeline::before {
+    content: "";
+    position: absolute;
+    left: 8px;
+    top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, rgba(245,158,11,0), rgba(245,158,11,0.8), rgba(245,158,11,0));
+}
+.timeline-item { position: relative; padding-left: 2rem; }
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    left: 2px; top: 0.75rem;
+    width: 12px; height: 12px; border-radius: 999px;
+    background: var(--primary);
+    box-shadow: 0 0 0 4px rgba(245,158,11,0.15);
+}
+
+/* Contact form floating labels (minimal) */
+.field { position: relative; }
+.field input, .field textarea { background: rgba(255,255,255,0.04); color: var(--text); border: 1px solid var(--card-border); }
+.field label {
+    position: absolute; left: 16px; top: 14px; color: var(--muted);
+    transition: all .2s ease; pointer-events: none; background: transparent;
+}
+.field input:focus + label, .field input:not(:placeholder-shown) + label,
+.field textarea:focus + label, .field textarea:not(:placeholder-shown) + label {
+    top: -8px; font-size: 12px; color: var(--primary); padding: 0 6px; background: rgba(11,16,33,0.85);
 }
