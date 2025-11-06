@@ -12,6 +12,8 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Load Poppins font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="styles.css">
 
     <!-- Styles for the Carousel & Project Video -->
     <style>
@@ -49,10 +51,10 @@
     </style>
 </head>
 
-<body class="text-gray-800">
+<body class="text-gray-900 dark:text-gray-100 relative overflow-x-hidden">
 
     <!-- Navigation Bar -->
-    <nav class="sticky top-0 z-50 bg-gray-900 shadow-lg text-white">
+    <nav class="sticky top-0 z-50 glass text-gray-900 dark:text-white">
         <div class="container mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center">
             <a href="#home" class="text-2xl font-bold mb-2 sm:mb-0">Bhaskar Pandit</a>
             <!-- Navigation links are hidden on small screens and shown as a column on large screens -->
@@ -64,28 +66,37 @@
                 <a href="#skills" class="hover:text-amber-400 transition duration-300">Skills</a>
                 <a href="#experience" class="hover:text-amber-400 transition duration-300">Experience</a>
                 <a href="#contact" class="hover:text-amber-400 transition duration-300">Contact</a>
+                <button id="themeToggle" aria-label="Toggle theme" class="ml-2 inline-flex items-center justify-center w-9 h-9 rounded-full border border-gray-300/60 dark:border-white/10 hover:bg-gray-900/5 dark:hover:bg-white/10 transition">
+                    <i class="fa-solid fa-moon text-gray-900 dark:hidden"></i>
+                    <i class="fa-solid fa-sun text-yellow-400 hidden dark:inline"></i>
+                </button>
             </div>
         </div>
     </nav>
 
+    <!-- Decorative blobs -->
+    <div class="blob blob--amber w-[420px] h-[420px] -top-24 -left-24 hidden md:block"></div>
+    <div class="blob blob--pink w-[360px] h-[360px] top-64 -right-24 hidden md:block"></div>
+    <div class="blob blob--blue w-[280px] h-[280px] -bottom-24 left-1/3 hidden md:block"></div>
+
     <main class="container mx-auto px-4">
         <!-- Home Section -->
         <section id="home"
-            class="flex flex-col lg:flex-row items-center justify-center lg:justify-between py-12 lg:py-24 space-y-8 lg:space-y-0 lg:space-x-12 min-h-screen">
+            class="flex flex-col lg:flex-row items-center justify-center lg:justify-between py-12 lg:py-24 space-y-8 lg:space-y-0 lg:space-x-12 min-h-screen reveal">
             <div class="text-center lg:text-left">
-                <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-gray-900 leading-tight">
-                    Hi, I'm <span class="text-amber-600">Bhaskar Pandit</span>
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight">
+                    Hi, I'm <span class="text-gradient">Bhaskar Pandit</span>
                 </h1>
-                <p class="mt-4 text-lg sm:text-xl text-gray-600 max-w-2xl">
+                <p class="mt-4 text-lg sm:text-xl text-gray-700 dark:text-gray-300 max-w-2xl">
                     Aspiring Software Engineer | Web Developer | Cyber Security Enthusiast | Engineering Student
                 </p>
                 <a href="#projects"
-                    class="mt-8 inline-block px-8 py-3 bg-amber-600 text-white font-semibold rounded-full shadow-lg hover:bg-amber-700 transition transform hover:scale-105">
+                    class="mt-8 inline-block px-8 py-3 bg-amber-600 text-white font-semibold rounded-full btn-cta">
                     View My Projects
                 </a>
             </div>
             <div class="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 mt-8 lg:mt-0">
-                <div class="absolute inset-0 bg-amber-600 rounded-full opacity-75 animate-pulse"></div>
+                <div class="absolute inset-0 bg-amber-600 rounded-full opacity-60 animate-pulse"></div>
                 <!-- Profile Image with Placeholder Fallback -->
                 <img src="profile-photo.jpg" alt="Bhaskar Pandit"
                     onerror="this.onerror=null; this.src='https://placehold.co/400x400/FFA500/FFFFFF?text=BP';"
@@ -94,9 +105,9 @@
         </section>
 
         <!-- About Me Section -->
-        <section id="about" class="bg-white rounded-xl shadow-lg p-8 md:p-12 mb-8">
-            <h2 class="text-3xl sm:text-4xl font-bold text-center mb-8 text-gray-900">About Me</h2>
-            <div class="prose max-w-none text-gray-700 leading-relaxed">
+        <section id="about" class="glass rounded-xl p-8 md:p-12 mb-8 reveal">
+            <h2 class="text-3xl sm:text-4xl font-bold text-center mb-8 headline">About Me</h2>
+            <div class="prose max-w-none text-gray-700 dark:text-gray-200 leading-relaxed">
                 <p>
                     I’m currently immersing myself in Information Science Engineering at APSCE, where learning feels like a grand adventure. Beyond the classroom, I proudly lead as the captain of our college cricket team—a role that’s gifted me unforgettable moments on university fields and the thrill of teamwork at its best.
                 </p>
@@ -113,8 +124,8 @@
         </section>
 
         <!-- Moments Section (Image Carousel) -->
-        <section id="moments" class="mb-8 bg-gray-100 rounded-xl shadow-lg p-8 md:p-12">
-            <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12 text-gray-900">Moments: Capturing Memories</h2>
+        <section id="moments" class="mb-8 glass rounded-xl p-8 md:p-12 reveal">
+            <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12 headline">Moments: Capturing Memories</h2>
             <div class="carousel-container relative">
                 <!-- Carousel Image -->
                 <img id="carouselImage" src="" alt="Moment" class="carousel-image active rounded-lg">
@@ -139,15 +150,15 @@
         </section>
 
         <!-- Projects Section (UPDATED) -->
-        <section id="projects" class="mb-8">
-            <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12 text-gray-900">Projects</h2>
+        <section id="projects" class="mb-8 reveal">
+            <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12 headline">Projects</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 
                 <!-- NEW PROJECT: RealMeta Museum Painting Scanner -->
-                <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300">
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">🖼️ RealMeta - Museum Painting Scanner</h3>
-                    <p class="text-gray-600 mb-4">A **no-login, camera-based museum painting scanner**. Point your phone, capture, and get instant rich information (text + audio, offline-ready). Includes a simple guided tour queue and anonymous analytics.</p>
-                    <ul class="list-disc list-inside text-sm text-gray-500 mb-4 ml-4">
+                <div class="glass rounded-xl p-6 tilt">
+                    <h3 class="text-xl font-bold mb-2">🖼️ RealMeta - Museum Painting Scanner</h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">A **no-login, camera-based museum painting scanner**. Point your phone, capture, and get instant rich information (text + audio, offline-ready). Includes a simple guided tour queue and anonymous analytics.</p>
+                    <ul class="list-disc list-inside text-sm text-gray-600 dark:text-gray-400 mb-4 ml-4">
                         <li>No login — immediate use</li>
                         <li>Camera capture and scan-based lookup (pHash)</li>
                         <li>Offline-ready via Service Worker</li>
@@ -172,9 +183,9 @@
                     </div>
                 </div>
 
-                <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300">
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">🧠 Smart Attendance System</h3>
-                    <p class="text-gray-600 mb-4">An AI-powered attendance management application that automatically marks student attendance using facial recognition through a live camera feed. This project is built using Python, Flask, OpenCV, and MediaPipe, offering a seamless, contactless attendance solution.</p>
+                <div class="glass rounded-xl p-6 tilt">
+                    <h3 class="text-xl font-bold mb-2">🧠 Smart Attendance System</h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">An AI-powered attendance management application that automatically marks student attendance using facial recognition through a live camera feed. This project is built using Python, Flask, OpenCV, and MediaPipe, offering a seamless, contactless attendance solution.</p>
                     <div class="flex flex-wrap gap-2">
                         <a href="https://smart-attendance-system-mc31.onrender.com"
                             class="inline-block bg-amber-600 text-white text-sm font-semibold py-2 px-4 rounded-full shadow-md hover:bg-amber-700 transition transform hover:scale-105"
@@ -189,9 +200,9 @@
                     </div>
                 </div>
 
-                <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300">
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">Smart Glasses for Visually Impaired</h3>
-                    <p class="text-gray-600 mb-4">A wearable assistive device using ESP32, ultrasonic sensors, and audio feedback to help visually impaired users detect obstacles in real-time.</p>
+                <div class="glass rounded-xl p-6 tilt">
+                    <h3 class="text-xl font-bold mb-2">Smart Glasses for Visually Impaired</h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">A wearable assistive device using ESP32, ultrasonic sensors, and audio feedback to help visually impaired users detect obstacles in real-time.</p>
                     <a href="https://github.com/BhaskPand/SmartGalass"
                         class="inline-block bg-gray-800 text-white text-sm font-semibold py-2 px-4 rounded-full shadow-md hover:bg-gray-700 transition transform hover:scale-105"
                         target="_blank" rel="noopener noreferrer">
@@ -199,9 +210,9 @@
                     </a>
                 </div>
 
-                <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300">
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">Prajñā AI (Smart Glasses & Stick)</h3>
-                    <p class="text-gray-600 mb-4">A groundbreaking, dual-purpose assistive technology combining ESP32 with AI for real-time object detection (Smart Glasses) and navigation assistance (Smart Stick).</p>
+                <div class="glass rounded-xl p-6 tilt">
+                    <h3 class="text-xl font-bold mb-2">Prajñā AI (Smart Glasses & Stick)</h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">A groundbreaking, dual-purpose assistive technology combining ESP32 with AI for real-time object detection (Smart Glasses) and navigation assistance (Smart Stick).</p>
                     <a href="https://github.com/BhaskPand/Prajna-AI-blindStick-" 
                         class="inline-block bg-gray-800 text-white text-sm font-semibold py-2 px-4 rounded-full shadow-md hover:bg-gray-700 transition transform hover:scale-105"
                         target="_blank" rel="noopener noreferrer">
@@ -209,9 +220,9 @@
                     </a>
                 </div>
                 
-                <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition-shadow duration-300">
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">ExamsAI – Competitive Exams Hub</h3>
-                    <p class="text-gray-600 mb-4">Built a full-stack AI-integrated web application as part of the Full Stack Developer Assessment by Bhatiyani Astute Intelligence Pvt. Ltd.</p>
+                <div class="glass rounded-xl p-6 tilt">
+                    <h3 class="text-xl font-bold mb-2">ExamsAI – Competitive Exams Hub</h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">Built a full-stack AI-integrated web application as part of the Full Stack Developer Assessment by Bhatiyani Astute Intelligence Pvt. Ltd.</p>
                     <div class="flex flex-wrap gap-2">
                         <a href="https://exams-ai-bhatiyani.vercel.app/"
                             class="inline-block bg-amber-600 text-white text-sm font-semibold py-2 px-4 rounded-full shadow-md hover:bg-amber-700 transition transform hover:scale-105"
@@ -240,57 +251,57 @@
         </section>
 
         <!-- Skills Section -->
-        <section id="skills" class="bg-gray-100 rounded-xl shadow-lg p-8 md:p-12 mb-8">
-            <h2 class="text-3xl sm:text-4xl font-bold text-center mb-8 text-gray-900">Skills</h2>
+        <section id="skills" class="glass rounded-xl p-8 md:p-12 mb-8 reveal">
+            <h2 class="text-3xl sm:text-4xl font-bold text-center mb-8 headline">Skills</h2>
             <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 text-center">
-                <div class="bg-white rounded-lg p-4 shadow-md flex flex-col items-center">
-                    <i class="fas fa-code text-3xl text-gray-600 mb-2"></i>
-                    <p class="font-semibold text-gray-900">Languages</p>
-                    <span class="text-sm text-gray-500">C, Java, Python, JavaScript</span>
+                <div class="glass rounded-lg p-4 flex flex-col items-center">
+                    <i class="fas fa-code text-3xl text-amber-500 mb-2"></i>
+                    <p class="font-semibold">Languages</p>
+                    <span class="text-sm text-gray-600 dark:text-gray-300">C, Java, Python, JavaScript</span>
                 </div>
-                <div class="bg-white rounded-lg p-4 shadow-md flex flex-col items-center">
-                    <i class="fas fa-tools text-3xl text-gray-600 mb-2"></i>
-                    <p class="font-semibold text-gray-900">Tools</p>
-                    <span class="text-sm text-gray-500">Git, VS Code, Linux</span>
+                <div class="glass rounded-lg p-4 flex flex-col items-center">
+                    <i class="fas fa-tools text-3xl text-amber-500 mb-2"></i>
+                    <p class="font-semibold">Tools</p>
+                    <span class="text-sm text-gray-600 dark:text-gray-300">Git, VS Code, Linux</span>
                 </div>
-                <div class="bg-white rounded-lg p-4 shadow-md flex flex-col items-center">
-                    <i class="fas fa-cubes text-3xl text-gray-600 mb-2"></i>
-                    <p class="font-semibold text-gray-900">Frameworks</p>
-                    <span class="text-sm text-gray-500">React, Next.js, Tailwind CSS, Flask</span>
+                <div class="glass rounded-lg p-4 flex flex-col items-center">
+                    <i class="fas fa-cubes text-3xl text-amber-500 mb-2"></i>
+                    <p class="font-semibold">Frameworks</p>
+                    <span class="text-sm text-gray-600 dark:text-gray-300">React, Next.js, Tailwind CSS, Flask</span>
                 </div>
-                <div class="bg-white rounded-lg p-4 shadow-md flex flex-col items-center">
-                    <i class="fas fa-robot text-3xl text-gray-600 mb-2"></i>
-                    <p class="font-semibold text-gray-900">AI/CV Libraries</p>
-                    <span class="text-sm text-gray-500">OpenCV, MediaPipe</span>
+                <div class="glass rounded-lg p-4 flex flex-col items-center">
+                    <i class="fas fa-robot text-3xl text-amber-500 mb-2"></i>
+                    <p class="font-semibold">AI/CV Libraries</p>
+                    <span class="text-sm text-gray-600 dark:text-gray-300">OpenCV, MediaPipe</span>
                 </div>
-                <div class="bg-white rounded-lg p-4 shadow-md flex flex-col items-center">
-                    <i class="fas fa-users text-3xl text-gray-600 mb-2"></i>
-                    <p class="font-semibold text-gray-900">Soft Skills</p>
-                    <span class="text-sm text-gray-500">Leadership, Teamwork, Communication</span>
+                <div class="glass rounded-lg p-4 flex flex-col items-center">
+                    <i class="fas fa-users text-3xl text-amber-500 mb-2"></i>
+                    <p class="font-semibold">Soft Skills</p>
+                    <span class="text-sm text-gray-600 dark:text-gray-300">Leadership, Teamwork, Communication</span>
                 </div>
             </div>
         </section>
 
         <!-- Experience Section -->
-        <section id="experience" class="mb-8">
-            <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12 text-gray-900">Experience</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <section id="experience" class="mb-8 reveal">
+            <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12 headline">Experience</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 timeline">
                 <!-- Placeholder for Experience 1 -->
-                <div class="bg-white rounded-xl shadow-lg p-6">
-                    <h3 class="text-xl font-bold text-gray-900">Software Engineering Intern</h3>
-                    <p class="text-gray-600 font-semibold mb-1">Next gen Edunet</p>
-                    <p class="text-sm text-gray-500 mb-4">October 2024 - November 2024</p>
-                    <p class="text-gray-700">
+                <div class="glass rounded-xl p-6 timeline-item">
+                    <h3 class="text-xl font-bold">Software Engineering Intern</h3>
+                    <p class="text-gray-700 dark:text-gray-300 font-semibold mb-1">Next gen Edunet</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">October 2024 - November 2024</p>
+                    <p class="text-gray-700 dark:text-gray-200">
                         Assisted in the development of a new web application feature using React and Node.js.
                         Collaborated with a team of engineers to write clean, maintainable code and participated in daily stand-ups and code reviews.
                     </p>
                 </div>
                 <!-- Placeholder for Experience 2 -->
-                <div class="bg-white rounded-xl shadow-lg p-6">
-                    <h3 class="text-xl font-bold text-gray-900">Web Development Trainee</h3>
-                    <p class="text-gray-600 font-semibold mb-1">Digital Agency</p>
-                    <p class="text-sm text-gray-500 mb-4">January 2023 - May 2023</p>
-                    <p class="text-gray-700">
+                <div class="glass rounded-xl p-6 timeline-item">
+                    <h3 class="text-xl font-bold">Web Development Trainee</h3>
+                    <p class="text-gray-700 dark:text-gray-300 font-semibold mb-1">Digital Agency</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">January 2023 - May 2023</p>
+                    <p class="text-gray-700 dark:text-gray-200">
                         Learned modern web development practices including responsive design and API integration.
                         Contributed to the front-end development of client websites using HTML, CSS, and JavaScript.
                     </p>
@@ -299,44 +310,41 @@
         </section>
 
         <!-- Resume Section -->
-        <section id="resume" class="flex flex-col items-center justify-center text-center p-8 md:p-12 mb-8">
-            <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">Resume</h2>
-            <p class="text-lg text-gray-700 mb-6">Download my full resume to learn more about my experience and skills.</p>
+        <section id="resume" class="flex flex-col items-center justify-center text-center p-8 md:p-12 mb-8 reveal">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-6 headline">Resume</h2>
+            <p class="text-lg text-gray-700 dark:text-gray-300 mb-6">Download my full resume to learn more about my experience and skills.</p>
             <a href="https://bhaskpand.github.io/resume.pdf"
-                class="inline-block px-8 py-3 bg-amber-600 text-white font-semibold rounded-full shadow-lg hover:bg-amber-700 transition transform hover:scale-105"
+                class="inline-block px-8 py-3 bg-amber-600 text-white font-semibold rounded-full btn-cta"
                 target="_blank" rel="noopener noreferrer">
                 <i class="fas fa-file-download mr-2"></i>Download Resume (PDF)
             </a>
         </section>
 
         <!-- Send Me a Message Section -->
-        <section id="message" class="bg-gray-100 rounded-xl shadow-lg p-8 md:p-12 mb-8">
-            <h2 class="text-3xl sm:text-4xl font-bold text-center mb-8 text-gray-900">Send Me a Message</h2>
-            <p class="text-lg text-gray-700 text-center mb-8 max-w-2xl mx-auto">
+        <section id="message" class="glass rounded-xl p-8 md:p-12 mb-8 reveal">
+            <h2 class="text-3xl sm:text-4xl font-bold text-center mb-8 headline">Send Me a Message</h2>
+            <p class="text-lg text-gray-700 dark:text-gray-200 text-center mb-8 max-w-2xl mx-auto">
                 Have a question or want to collaborate? I'd love to hear from you! Please fill out the form below.
             </p>
             <form action="mailto:bhaskarpanditmn@gmail.com" method="post" enctype="text/plain" class="max-w-xl mx-auto space-y-6">
-                <div>
-                    <label for="name" class="block text-gray-700 font-semibold mb-2">Name</label>
-                    <input type="text" id="name" name="name"
-                        class="w-full px-4 py-3 rounded-lg shadow-sm border border-gray-300 focus:outline-none focus:ring-2 focus:ring-amber-500"
-                        placeholder="Your Name" required>
+                <div class="field">
+                    <input type="text" id="name" name="name" placeholder=" "
+                        class="w-full px-4 py-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500" required>
+                    <label for="name">Name</label>
                 </div>
-                <div>
-                    <label for="email" class="block text-gray-700 font-semibold mb-2">Email</label>
-                    <input type="email" id="email" name="email"
-                        class="w-full px-4 py-3 rounded-lg shadow-sm border border-gray-300 focus:outline-none focus:ring-2 focus:ring-amber-500"
-                        placeholder="your.email@example.com" required>
+                <div class="field">
+                    <input type="email" id="email" name="email" placeholder=" "
+                        class="w-full px-4 py-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500" required>
+                    <label for="email">Email</label>
                 </div>
-                <div>
-                    <label for="message" class="block text-gray-700 font-semibold mb-2">Message</label>
-                    <textarea id="message" name="message" rows="6"
-                        class="w-full px-4 py-3 rounded-lg shadow-sm border border-gray-300 focus:outline-none focus:ring-2 focus:ring-amber-500 resize-none"
-                        placeholder="Write your message here..." required></textarea>
+                <div class="field">
+                    <textarea id="message" name="message" rows="6" placeholder=" "
+                        class="w-full px-4 py-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 resize-none" required></textarea>
+                    <label for="message">Message</label>
                 </div>
                 <div class="text-center">
                     <button type="submit"
-                        class="px-8 py-3 bg-amber-600 text-white font-semibold rounded-full shadow-lg hover:bg-amber-700 transition transform hover:scale-105">
+                        class="px-8 py-3 bg-amber-600 text-white font-semibold rounded-full btn-cta">
                         Send Message
                     </button>
                 </div>
@@ -344,10 +352,10 @@
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="bg-white rounded-xl shadow-lg p-8 md:p-12 mb-8 text-center">
-            <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">Contact</h2>
-            <p class="text-lg text-gray-700 mb-8">Feel free to connect with me on any of these platforms!</p>
-            <div class="flex justify-center space-x-6 sm:space-x-8 text-4xl text-gray-600">
+        <section id="contact" class="glass rounded-xl p-8 md:p-12 mb-8 text-center reveal">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-6 headline">Contact</h2>
+            <p class="text-lg text-gray-700 dark:text-gray-200 mb-8">Feel free to connect with me on any of these platforms!</p>
+            <div class="flex justify-center space-x-6 sm:space-x-8 text-4xl text-gray-600 dark:text-gray-300">
                 <a href="mailto:bhaskarpanditmn@gmail.com" aria-label="Email"
                     class="hover:text-amber-600 transition duration-300 transform hover:scale-110">
                     <i class="fas fa-envelope"></i>
@@ -369,22 +377,22 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white text-center py-6 mt-12">
+    <footer class="text-white text-center py-6 mt-12">
         <div class="container mx-auto px-4">
-            <p>&copy; 2024 Bhaskar Pandit M N. All Rights Reserved.</p>
+            <p class="text-gray-300">&copy; 2024 Bhaskar Pandit M N. All Rights Reserved.</p>
         </div>
     </footer>
     <script>
-        // JavaScript for the Moments Carousel
+        // JavaScript for the Moments Carousel (placeholders only)
         const images = [
-            "https://placehold.co/600x400/535C7A/FFFFFF?text=Cricket+Match",
-            "https://placehold.co/600x400/779872/FFFFFF?text=Friends+Hangout",
-            "https://placehold.co/600x400/965D69/FFFFFF?text=Coding+Session",
-            "https://placehold.co/600x400/6A7B8E/FFFFFF?text=College+Trip",
-            "https://placehold.co/600x400/4B5569/FFFFFF?text=Project+Work",
-            "https://placehold.co/600x400/805D78/FFFFFF?text=Music+Time",
-            "https://placehold.co/600x400/5B8B77/FFFFFF?text=Hackathon",
-            "https://placehold.co/600x400/7A6C5D/FFFFFF?text=Trading+Desk"
+            'https://placehold.co/1200x800/535C7A/FFFFFF?text=Cricket+Match',
+            'https://placehold.co/1200x800/779872/FFFFFF?text=Friends+Hangout',
+            'https://placehold.co/1200x800/965D69/FFFFFF?text=Coding+Session',
+            'https://placehold.co/1200x800/6A7B8E/FFFFFF?text=College+Trip',
+            'https://placehold.co/1200x800/4B5569/FFFFFF?text=Project+Work',
+            'https://placehold.co/1200x800/805D78/FFFFFF?text=Music+Time',
+            'https://placehold.co/1200x800/5B8B77/FFFFFF?text=Hackathon',
+            'https://placehold.co/1200x800/7A6C5D/FFFFFF?text=Trading+Desk'
         ];
 
         let currentIndex = 0;
@@ -428,7 +436,7 @@
         let autoPlayInterval = setInterval(() => {
             currentIndex = (currentIndex + 1) % images.length;
             updateCarousel();
-        }, 3000); // Change image every 3 seconds
+        }, 3000);
 
         // Stop and restart autoplay on hover
         const carouselContainer = document.querySelector('.carousel-container');
@@ -445,6 +453,7 @@
         // Initialize the carousel
         updateCarousel();
     </script>
+    <script src="script.js"></script>
 </body>
 
 </html>
