@@ -15,7 +15,7 @@
     <!-- Custom styles -->
     <link rel="stylesheet" href="styles.css">
 
-    <!-- Styles for the Carousel & Project Video -->
+    <!-- Styles -->
     <style>
         body {
             font-family: 'Poppins', sans-serif;
@@ -23,21 +23,12 @@
             background-color: #f7f7f7;
         }
 
-        .carousel-container {
-            position: relative;
+        /* Spline Viewer Styles */
+        spline-viewer {
             width: 100%;
-            max-width: 600px;
-            margin: 0 auto;
-            overflow: hidden;
+            height: 100%;
             border-radius: 1rem;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        }
-
-        .carousel-image {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-            display: block;
+            overflow: hidden;
         }
 
         /* Specific style for the video preview in the Project section (now unused, but kept for safety) */
@@ -49,6 +40,8 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
     </style>
+    <!-- Spline Viewer Script -->
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.11.6/build/spline-viewer.js"></script>
 </head>
 
 <body class="text-gray-900 dark:text-gray-100 relative overflow-x-hidden">
@@ -61,7 +54,6 @@
             <div class="space-x-4 sm:space-x-8 text-lg flex items-center hidden sm:flex">
                 <a href="#home" class="hover:text-amber-400 transition duration-300">Home</a>
                 <a href="#about" class="hover:text-amber-400 transition duration-300">About</a>
-                <a href="#moments" class="hover:text-amber-400 transition duration-300">Moments</a>
                 <a href="#projects" class="hover:text-amber-400 transition duration-300">Projects</a>
                 <a href="#skills" class="hover:text-amber-400 transition duration-300">Skills</a>
                 <a href="#experience" class="hover:text-amber-400 transition duration-300">Experience</a>
@@ -126,29 +118,11 @@
             </div>
         </section>
 
-        <!-- Moments Section (Image Carousel) -->
-        <section id="moments" class="mb-8 glass rounded-xl p-8 md:p-12 reveal">
-            <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12 headline">Moments: Capturing Memories</h2>
-            <div class="carousel-container relative">
-                <!-- Carousel Image -->
-                <img id="carouselImage" src="" alt="Moment" class="carousel-image active rounded-lg">
-
-                <!-- Previous Button -->
-                <button id="prevBtn"
-                    class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-3 rounded-full opacity-75 hover:opacity-100 transition-opacity z-10"
-                    aria-label="Previous Image">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <!-- Next Button -->
-                <button id="nextBtn"
-                    class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-3 rounded-full opacity-75 hover:opacity-100 transition-opacity z-10"
-                    aria-label="Next Image">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-
-                <!-- Indicators -->
-                <div id="carouselIndicators"
-                    class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2"></div>
+        <!-- Spline 3D Viewer Section -->
+        <section id="spline-viewer" class="mb-8 glass rounded-xl p-8 md:p-12 reveal">
+            <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12 headline">3D Experience</h2>
+            <div class="w-full" style="height: 600px; max-width: 100%; margin: 0 auto;">
+                <spline-viewer url="https://prod.spline.design/zIVUsl54dNbfD88B/scene.splinecode"></spline-viewer>
             </div>
         </section>
 
@@ -292,75 +266,6 @@
             <p class="text-gray-300">&copy; 2024 Bhaskar Pandit M N. All Rights Reserved.</p>
         </div>
     </footer>
-    <script>
-        // JavaScript for the Moments Carousel - Load from localStorage
-        let images = momentsManager.getMoments();
-        
-        // If no images, use placeholder
-        if (images.length === 0) {
-            images = ['https://placehold.co/1200x800/535C7A/FFFFFF?text=No+Images+Yet'];
-        }
-
-        let currentIndex = 0;
-        const carouselImage = document.getElementById('carouselImage');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        const indicatorsContainer = document.getElementById('carouselIndicators');
-
-        function updateCarousel() {
-            if (images.length > 0) {
-                carouselImage.src = images[currentIndex];
-                updateIndicators();
-            }
-        }
-
-        function updateIndicators() {
-            indicatorsContainer.innerHTML = '';
-            images.forEach((_, index) => {
-                const dot = document.createElement('span');
-                dot.classList.add('w-3', 'h-3', 'rounded-full', 'bg-gray-400', 'cursor-pointer', 'transition-colors', 'duration-300');
-                if (index === currentIndex) {
-                    dot.classList.add('bg-amber-600');
-                }
-                dot.addEventListener('click', () => {
-                    currentIndex = index;
-                    updateCarousel();
-                });
-                indicatorsContainer.appendChild(dot);
-            });
-        }
-
-        prevBtn.addEventListener('click', () => {
-            currentIndex = (currentIndex - 1 + images.length) % images.length;
-            updateCarousel();
-        });
-
-        nextBtn.addEventListener('click', () => {
-            currentIndex = (currentIndex + 1) % images.length;
-            updateCarousel();
-        });
-
-        // Autoplay the carousel
-        let autoPlayInterval = setInterval(() => {
-            currentIndex = (currentIndex + 1) % images.length;
-            updateCarousel();
-        }, 3000);
-
-        // Stop and restart autoplay on hover
-        const carouselContainer = document.querySelector('.carousel-container');
-        carouselContainer.addEventListener('mouseenter', () => {
-            clearInterval(autoPlayInterval);
-        });
-        carouselContainer.addEventListener('mouseleave', () => {
-            autoPlayInterval = setInterval(() => {
-                currentIndex = (currentIndex + 1) % images.length;
-                updateCarousel();
-            }, 3000);
-        });
-
-        // Initialize the carousel
-        updateCarousel();
-    </script>
     <script src="admin.js"></script>
     <script src="script.js"></script>
     <script>
