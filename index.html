@@ -1,185 +1,186 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <title>Bhaskar Pandit | Portfolio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio - Bhaskar Pandit M N</title>
 
-  <!-- Tailwind -->
-  <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <!-- Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+        rel="stylesheet">
 
-  <style>
-    body { font-family: 'Poppins', sans-serif; }
-    .glass {
-      background: rgba(255,255,255,0.75);
-      backdrop-filter: blur(14px);
-      border: 1px solid rgba(255,255,255,0.3);
-    }
-  </style>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            background-color: #f7f7f7;
+        }
+
+        spline-viewer {
+            width: 100%;
+            height: 100%;
+            border-radius: 1rem;
+            overflow: hidden;
+        }
+
+        .project-video-preview {
+            width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            margin-bottom: 0.75rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+
+    <!-- Spline -->
+    <script type="module"
+        src="https://unpkg.com/@splinetool/viewer@1.11.6/build/spline-viewer.js"></script>
 </head>
 
-<body class="bg-[#f3f7fb] text-gray-900">
+<body class="text-gray-900 dark:text-gray-100 relative overflow-x-hidden">
 
-<!-- NAVBAR -->
-<nav class="w-full py-5 bg-transparent">
-  <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
-    <h1 class="text-2xl font-bold text-blue-600">Portfolio.</h1>
-    <div class="space-x-8 hidden md:block font-medium">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#experience">Experience</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </div>
-</nav>
+    <!-- NAVBAR -->
+    <nav class="sticky top-0 z-50 glass">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#home" class="text-2xl font-bold">Bhaskar Pandit</a>
 
-<!-- HERO SECTION -->
-<section id="home" class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center min-h-[85vh]">
+            <div class="space-x-8 text-lg hidden sm:flex items-center">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#skills">Skills</a>
+                <a href="#experience">Experience</a>
+                <a href="#contact">Contact</a>
 
-  <!-- LEFT -->
-  <div>
-    <p class="text-lg mb-3">Hello,</p>
-    <h1 class="text-5xl font-extrabold leading-tight">
-      I'm <span class="text-blue-600">Bhaskar Pandit</span>
-    </h1>
-    <p class="mt-4 text-xl text-gray-600">
-      Software Developer • AI/ML Enthusiast
-    </p>
-    <p class="mt-2 text-gray-500">
-      Bengaluru, India
-    </p>
+                <a href="admin.html" title="Admin Login">
+                    <i class="fas fa-lock"></i>
+                </a>
 
-    <a href="#contact"
-       class="inline-block mt-8 bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold shadow hover:bg-blue-700 transition">
-      Hire Me
-    </a>
-  </div>
+                <button id="themeToggle"
+                    class="w-9 h-9 rounded-full border flex items-center justify-center">
+                    <i class="fa-solid fa-moon dark:hidden"></i>
+                    <i class="fa-solid fa-sun hidden dark:inline"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
 
-  <!-- RIGHT IMAGE -->
-  <div class="flex justify-center">
-    <img src="profile-photo.jpg"
-         onerror="this.src='https://placehold.co/420x420/2563eb/ffffff?text=BP'"
-         class="w-[380px] h-[380px] object-cover rounded-2xl shadow-xl">
-  </div>
-</section>
+    <main class="container mx-auto px-4">
 
-<!-- ABOUT -->
-<section id="about" class="max-w-5xl mx-auto px-6 py-20">
-  <h2 class="text-4xl font-bold text-center mb-8">About Me</h2>
-  <p class="text-center text-gray-600 leading-relaxed">
-    I am an Information Science Engineering student passionate about
-    software development, AI/ML, and real-world problem solving.
-    I have experience working with startups, government organizations,
-    and freelance AI projects.
-  </p>
-</section>
+        <!-- HOME -->
+        <section id="home"
+            class="flex flex-col lg:flex-row items-center justify-between min-h-screen py-20">
 
-<!-- EXPERIENCE -->
-<section id="experience" class="max-w-6xl mx-auto px-6 py-20">
-  <h2 class="text-4xl font-bold text-center mb-14">Experience</h2>
+            <div>
+                <h1 class="text-5xl font-extrabold">
+                    Hi, I'm <span class="text-gradient">Bhaskar Pandit</span>
+                </h1>
 
-  <div class="space-y-8">
+                <p class="mt-4 text-xl">
+                    Aspiring Software Engineer | Web Developer | Cyber Security Enthusiast
+                </p>
 
-    <!-- DRDO -->
-    <div class="glass rounded-xl p-6 flex gap-6 items-start">
-      <img src="https://upload.wikimedia.org/wikipedia/en/6/6b/Defence_Research_and_Development_Organisation_Logo.png"
-           class="w-16 h-16 object-contain">
-      <div>
-        <h3 class="text-xl font-bold">AI/ML Intern</h3>
-        <p class="font-semibold text-gray-700">
-          Defence Research and Development Organisation (DRDO)
-        </p>
-        <p class="text-sm text-gray-500">
-          Jan 2026 – Present · Bengaluru · On-site
-        </p>
-      </div>
-    </div>
+                <a href="#projects"
+                    class="inline-block mt-8 px-8 py-3 bg-amber-600 text-white rounded-full">
+                    View My Projects
+                </a>
+            </div>
 
-    <!-- M.S. Innovations -->
-    <div class="glass rounded-xl p-6 flex gap-6 items-start">
-      <img src="https://placehold.co/80x80?text=MS"
-           class="w-16 h-16 rounded-lg">
-      <div>
-        <h3 class="text-xl font-bold">Software Developer</h3>
-        <p class="font-semibold text-gray-700">M.S. Innovations · Part-time</p>
-        <p class="text-sm text-gray-500">
-          Jan 2026 – Present · Bengaluru · Remote
-        </p>
-        <p class="text-sm mt-2 text-gray-600">
-          React.js, Software Development
-        </p>
-      </div>
-    </div>
+            <div class="relative w-80 h-80 mt-10">
+                <div class="absolute inset-0 bg-amber-600 rounded-full animate-pulse opacity-60"></div>
+                <img src="profile-photo.jpg"
+                    onerror="this.src='https://placehold.co/400x400/FFA500/FFFFFF?text=BP'"
+                    class="relative w-full h-full rounded-full object-cover shadow-xl" />
+            </div>
+        </section>
 
-    <!-- KLS Tech Solutions -->
-    <div class="glass rounded-xl p-6 flex gap-6 items-start">
-      <img src="https://placehold.co/80x80?text=KLS"
-           class="w-16 h-16 rounded-lg">
-      <div>
-        <h3 class="text-xl font-bold">Software Developer</h3>
-        <p class="font-semibold text-gray-700">KLS Tech Solutions · Part-time</p>
-        <p class="text-sm text-gray-500">
-          Sep 2025 – Present · Bengaluru · Remote
-        </p>
-        <p class="text-sm mt-2 text-gray-600">Leadership</p>
-      </div>
-    </div>
+        <!-- ABOUT -->
+        <section id="about" class="glass p-10 rounded-xl mb-10">
+            <h2 class="text-4xl font-bold text-center mb-6">About Me</h2>
+            <p class="text-gray-700 leading-relaxed">
+                I’m currently pursuing Information Science Engineering at APSCE and
+                serving as the captain of the college cricket team.
+            </p>
+        </section>
 
-    <!-- Soul AI -->
-    <div class="glass rounded-xl p-6 flex gap-6 items-start">
-      <img src="https://placehold.co/80x80?text=AI"
-           class="w-16 h-16 rounded-lg">
-      <div>
-        <h3 class="text-xl font-bold">AI Associate</h3>
-        <p class="font-semibold text-gray-700">Soul AI · Freelance</p>
-        <p class="text-sm text-gray-500">
-          Mar 2025 – May 2025 · Bengaluru · Remote
-        </p>
-        <p class="text-sm mt-2 text-gray-600">
-          AI model development, ML optimization, creative problem solving
-        </p>
-      </div>
-    </div>
+        <!-- SPLINE -->
+        <section class="glass p-10 rounded-xl mb-10">
+            <h2 class="text-4xl font-bold text-center mb-10">3D Experience</h2>
+            <div style="height:600px">
+                <spline-viewer
+                    url="https://prod.spline.design/zIVUsl54dNbfD88B/scene.splinecode">
+                </spline-viewer>
+            </div>
+        </section>
 
-    <!-- Edunet -->
-    <div class="glass rounded-xl p-6 flex gap-6 items-start">
-      <img src="https://placehold.co/80x80?text=Edu"
-           class="w-16 h-16 rounded-lg">
-      <div>
-        <h3 class="text-xl font-bold">Full Stack Development Trainee</h3>
-        <p class="font-semibold text-gray-700">Edunet Foundation</p>
-        <p class="text-sm text-gray-500">
-          Oct 2024 – Mar 2025 · Bengaluru · On-site
-        </p>
-        <p class="text-sm mt-2 text-gray-600">
-          MERN Stack, HTML, CSS, JavaScript
-        </p>
-      </div>
-    </div>
+        <!-- PROJECTS -->
+        <section id="projects" class="mb-10">
+            <h2 class="text-4xl font-bold text-center mb-10">Projects</h2>
+            <div id="projectsContainer"
+                class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            </div>
+        </section>
 
-  </div>
-</section>
+        <!-- SKILLS -->
+        <section id="skills" class="glass p-10 rounded-xl mb-10">
+            <h2 class="text-4xl font-bold text-center mb-8">Skills</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div>Languages: C, Java, Python, JS</div>
+                <div>Frameworks: React, Tailwind</div>
+                <div>Tools: Git, Linux</div>
+                <div>AI: OpenCV, MediaPipe</div>
+            </div>
+        </section>
 
-<!-- CONTACT -->
-<section id="contact" class="py-20 text-center">
-  <h2 class="text-4xl font-bold mb-6">Contact</h2>
-  <div class="flex justify-center space-x-8 text-3xl text-gray-600">
-    <a href="mailto:bhaskarpanditmn@gmail.com"><i class="fas fa-envelope"></i></a>
-    <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
-    <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
-  </div>
-</section>
+        <!-- EXPERIENCE -->
+        <section id="experience" class="mb-10">
+            <h2 class="text-4xl font-bold text-center mb-10">Experience</h2>
 
-<footer class="text-center py-6 text-gray-500">
-  © 2026 Bhaskar Pandit. All rights reserved.
-</footer>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="glass p-6 rounded-xl">
+                    <h3 class="font-bold text-xl">Software Engineering Intern</h3>
+                    <p>Next Gen Edunet</p>
+                </div>
+
+                <div class="glass p-6 rounded-xl">
+                    <h3 class="font-bold text-xl">Web Development Trainee</h3>
+                    <p>Digital Agency</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact" class="glass p-10 rounded-xl text-center">
+            <h2 class="text-4xl font-bold mb-6">Contact</h2>
+            <div class="flex justify-center space-x-6 text-3xl">
+                <i class="fas fa-envelope"></i>
+                <i class="fab fa-linkedin"></i>
+                <i class="fab fa-github"></i>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="text-center py-6 text-gray-400">
+        © 2024 Bhaskar Pandit M N
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="admin.js"></script>
+    <script src="script.js"></script>
 
 </body>
 </html>
