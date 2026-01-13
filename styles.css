@@ -1,149 +1,79 @@
-/* =========================
-   GLOBAL RESET & TYPOGRAPHY
-   ========================= */
+/* DESIGN TOKENS */
+:root {
+    --primary: #2563eb;
+    --bg-subtle: #f8fafc;
+    --card-border: rgba(226, 232, 240, 0.8);
+}
+
+/* GLOBAL RESET */
 html {
     scroll-behavior: smooth;
 }
 
 body {
     font-family: 'Poppins', sans-serif;
-    color: #0f172a; /* slate-900 */
-    background: linear-gradient(180deg, #ffffff 0%, #eef5ff 100%);
-    position: relative;
+    background-color: var(--bg-subtle);
+    color: #0f172a;
 }
 
-/* =========================
-   DESIGN TOKENS (LIGHT ONLY)
-   ========================= */
-:root {
-    --primary: #2563eb;        /* blue-600 */
-    --primary-soft: #93c5fd;   /* blue-300 */
-    --text-main: #0f172a;      /* slate-900 */
-    --text-muted: #475569;     /* slate-600 */
-    --glass-bg: rgba(255, 255, 255, 0.92);
-    --glass-border: rgba(15, 23, 42, 0.08);
-    --shadow-soft: 0 10px 25px rgba(15, 23, 42, 0.08);
+.ui-font {
+    font-family: 'Inter', sans-serif;
 }
 
-/* =========================
-   REMOVE HEAVY OVERLAYS
-   ========================= */
-body::before,
-body::after {
-    display: none;
-}
-
-/* =========================
-   GLASS CARDS (FIXED)
-   ========================= */
+/* NAVIGATION */
 .glass {
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    box-shadow: var(--shadow-soft);
-    color: var(--text-main);
-    backdrop-filter: blur(8px);
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 }
 
-/* =========================
-   NAVBAR LINKS
-   ========================= */
-nav a {
-    color: var(--text-main);
-    font-weight: 500;
+/* BENTO CARDS */
+.bento-card {
+    background: #ffffff;
+    border: 1px solid var(--card-border);
+    border-radius: 24px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
 
-nav a:hover {
-    color: var(--primary);
+.bento-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
+    border-color: var(--primary);
 }
 
-/* =========================
-   HEADINGS
-   ========================= */
-h1, h2, h3 {
-    color: var(--text-main);
+/* TYPOGRAPHY */
+.text-gradient {
+    background: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-/* =========================
-   PARAGRAPHS & TEXT
-   ========================= */
-p {
-    color: var(--text-muted);
-    line-height: 1.7;
+/* HERO IMAGE */
+.hero-img-frame {
+    border-radius: 32px;
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
 }
 
-/* =========================
-   BUTTONS
-   ========================= */
-.btn-cta,
-a.bg-blue-600 {
-    background-color: var(--primary);
-    color: #ffffff;
-    box-shadow: 0 10px 20px rgba(37, 99, 235, 0.25);
-    transition: all 0.25s ease;
+/* PROJECT TAGS */
+.tag {
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 99px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
 }
 
-.btn-cta:hover,
-a.bg-blue-600:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 16px 28px rgba(37, 99, 235, 0.35);
+/* CUSTOM SCROLLBAR */
+::-webkit-scrollbar {
+    width: 6px;
 }
 
-/* =========================
-   SECTION SPACING
-   ========================= */
-section {
-    padding: 3rem 1rem;
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
 }
-
-@media (min-width: 768px) {
-    section {
-        padding: 5rem 1rem;
-    }
-}
-
-/* =========================
-   EXPERIENCE CARDS
-   ========================= */
-#experience h3 {
-    color: var(--text-main);
-}
-
-#experience p {
-    color: var(--text-muted);
-}
-
-/* =========================
-   SKILLS GRID
-   ========================= */
-#skills div {
-    font-weight: 500;
-    color: var(--text-main);
-}
-
-/* =========================
-   ICONS
-   ========================= */
-i {
-    color: var(--primary);
-}
-
-/* =========================
-   FOOTER
-   ========================= */
-footer {
-    background: transparent;
-    color: var(--text-muted);
-}
-
-/* =========================
-   PROJECT CARDS (SAFE)
-   ========================= */
-.tilt {
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.tilt:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.15);
-}
-
