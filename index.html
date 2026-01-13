@@ -1,414 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Bhaskar Pandit M N</title>
-    <!-- Load Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Load Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- Load Poppins font -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <!-- Custom styles -->
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <title>Bhaskar Pandit | Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Styles -->
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            min-height: 100vh;
-            background-color: #f7f7f7;
-        }
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-        /* Spline Viewer Styles */
-        spline-viewer {
-            width: 100%;
-            height: 100%;
-            border-radius: 1rem;
-            overflow: hidden;
-        }
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
-        /* Specific style for the video preview in the Project section (now unused, but kept for safety) */
-        .project-video-preview {
-            width: 100%;
-            height: auto;
-            border-radius: 0.5rem;
-            margin-bottom: 0.75rem;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-    </style>
-    <!-- Spline Viewer Script -->
-    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.11.6/build/spline-viewer.js"></script>
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
+
+  <style>
+    body { font-family: 'Poppins', sans-serif; }
+    .glass {
+      background: rgba(255,255,255,0.75);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+  </style>
 </head>
 
-<body class="text-gray-900 dark:text-gray-100 relative overflow-x-hidden">
+<body class="bg-[#f3f7fb] text-gray-900">
 
-    <!-- Navigation Bar -->
-    <nav class="sticky top-0 z-50 glass text-gray-900 dark:text-white">
-        <div class="container mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center">
-            <a href="#home" class="text-2xl font-bold mb-2 sm:mb-0">Bhaskar Pandit</a>
-            <!-- Navigation links are hidden on small screens and shown as a column on large screens -->
-            <div class="space-x-4 sm:space-x-8 text-lg flex items-center hidden sm:flex">
-                <a href="#home" class="hover:text-amber-400 transition duration-300">Home</a>
-                <a href="#about" class="hover:text-amber-400 transition duration-300">About</a>
-                <a href="#projects" class="hover:text-amber-400 transition duration-300">Projects</a>
-                <a href="#skills" class="hover:text-amber-400 transition duration-300">Skills</a>
-                <a href="#experience" class="hover:text-amber-400 transition duration-300">Experience</a>
-                <a href="#contact" class="hover:text-amber-400 transition duration-300">Contact</a>
-                <a href="admin.html" class="hover:text-amber-400 transition duration-300 text-sm opacity-70" title="Admin Login">
-                    <i class="fas fa-lock"></i>
-                </a>
-                <button id="themeToggle" aria-label="Toggle theme" class="ml-2 inline-flex items-center justify-center w-9 h-9 rounded-full border border-gray-300/60 dark:border-white/10 hover:bg-gray-900/5 dark:hover:bg-white/10 transition">
-                    <i class="fa-solid fa-moon text-gray-900 dark:hidden"></i>
-                    <i class="fa-solid fa-sun text-yellow-400 hidden dark:inline"></i>
-                </button>
-            </div>
-        </div>
-    </nav>
+<!-- NAVBAR -->
+<nav class="w-full py-5 bg-transparent">
+  <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+    <h1 class="text-2xl font-bold text-blue-600">Portfolio.</h1>
+    <div class="space-x-8 hidden md:block font-medium">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
 
-    <!-- Decorative blobs -->
-    <div class="blob blob--amber w-[420px] h-[420px] -top-24 -left-24 hidden md:block"></div>
-    <div class="blob blob--pink w-[360px] h-[360px] top-64 -right-24 hidden md:block"></div>
-    <div class="blob blob--blue w-[280px] h-[280px] -bottom-24 left-1/3 hidden md:block"></div>
+<!-- HERO SECTION -->
+<section id="home" class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center min-h-[85vh]">
 
-    <main class="container mx-auto px-4">
-        <!-- Home Section -->
-        <section id="home"
-            class="flex flex-col lg:flex-row items-center justify-center lg:justify-between py-12 lg:py-24 space-y-8 lg:space-y-0 lg:space-x-12 min-h-screen reveal">
-            <div class="text-center lg:text-left">
-                <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight">
-                    Hi, I'm <span class="text-gradient">Bhaskar Pandit</span>
-                </h1>
-                <p class="mt-4 text-lg sm:text-xl text-gray-700 dark:text-gray-300 max-w-2xl">
-                    Aspiring Software Engineer | Web Developer | Cyber Security Enthusiast | Engineering Student
-                </p>
-                <a href="#projects"
-                    class="mt-8 inline-block px-8 py-3 bg-amber-600 text-white font-semibold rounded-full btn-cta">
-                    View My Projects
-                </a>
-            </div>
-            <div class="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 mt-8 lg:mt-0">
-                <div class="absolute inset-0 bg-amber-600 rounded-full opacity-60 animate-pulse"></div>
-                <!-- Profile Image with Placeholder Fallback -->
-                <img src="profile-photo.jpg" alt="Bhaskar Pandit"
-                    onerror="this.onerror=null; this.src='https://placehold.co/400x400/FFA500/FFFFFF?text=BP';"
-                    class="relative w-full h-full rounded-full object-cover shadow-2xl ring-4 ring-white ring-offset-4 ring-offset-gray-100" />
-            </div>
-        </section>
+  <!-- LEFT -->
+  <div>
+    <p class="text-lg mb-3">Hello,</p>
+    <h1 class="text-5xl font-extrabold leading-tight">
+      I'm <span class="text-blue-600">Bhaskar Pandit</span>
+    </h1>
+    <p class="mt-4 text-xl text-gray-600">
+      Software Developer • AI/ML Enthusiast
+    </p>
+    <p class="mt-2 text-gray-500">
+      Bengaluru, India
+    </p>
 
-        <!-- About Me Section -->
-        <section id="about" class="glass rounded-xl p-8 md:p-12 mb-8 reveal">
-            <h2 class="text-3xl sm:text-4xl font-bold text-center mb-8 headline">About Me</h2>
-            <div class="prose max-w-none text-gray-700 dark:text-gray-200 leading-relaxed">
-                <p>
-                    I’m currently immersing myself in Information Science Engineering at APSCE, where learning feels like a grand adventure. Beyond the classroom, I proudly lead as the captain of our college cricket team—a role that’s gifted me unforgettable moments on university fields and the thrill of teamwork at its best.
-                </p>
-                <p>
-                    My passion lies in crafting software solutions that truly make a difference. I’m endlessly curious about digital marketing and the world of defense technologies, always seeking new ways to combine creativity with impact.
-                </p>
-                <p>
-                    When I'm not coding or on the cricket pitch, you’ll find me exploring the ups and downs of the financial markets—trading both challenges and opportunities. Music is my escape and inspiration; it keeps my creativity flowing and my spirit grounded.
-                </p>
-                <p>
-                    Above all, I believe in chasing dreams with heart, learning from every experience, and spreading positivity along the way. Let’s build, explore, and make a difference—together!
-                </p>
-            </div>
-        </section>
+    <a href="#contact"
+       class="inline-block mt-8 bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold shadow hover:bg-blue-700 transition">
+      Hire Me
+    </a>
+  </div>
 
-        <!-- Spline 3D Viewer Section -->
-        <section id="spline-viewer" class="mb-8 glass rounded-xl p-8 md:p-12 reveal">
-            <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12 headline">3D Experience</h2>
-            <div class="w-full" style="height: 600px; max-width: 100%; margin: 0 auto;">
-                <spline-viewer url="https://prod.spline.design/zIVUsl54dNbfD88B/scene.splinecode"></spline-viewer>
-            </div>
-        </section>
+  <!-- RIGHT IMAGE -->
+  <div class="flex justify-center">
+    <img src="profile-photo.jpg"
+         onerror="this.src='https://placehold.co/420x420/2563eb/ffffff?text=BP'"
+         class="w-[380px] h-[380px] object-cover rounded-2xl shadow-xl">
+  </div>
+</section>
 
-        <!-- Projects Section (UPDATED) -->
-        <section id="projects" class="mb-8 reveal">
-            <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12 headline">Projects</h2>
-            <div id="projectsContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Projects will be loaded dynamically here -->
-            </div>
-        </section>
+<!-- ABOUT -->
+<section id="about" class="max-w-5xl mx-auto px-6 py-20">
+  <h2 class="text-4xl font-bold text-center mb-8">About Me</h2>
+  <p class="text-center text-gray-600 leading-relaxed">
+    I am an Information Science Engineering student passionate about
+    software development, AI/ML, and real-world problem solving.
+    I have experience working with startups, government organizations,
+    and freelance AI projects.
+  </p>
+</section>
 
-        <!-- Skills Section -->
-        <section id="skills" class="glass rounded-xl p-8 md:p-12 mb-8 reveal">
-            <h2 class="text-3xl sm:text-4xl font-bold text-center mb-8 headline">Skills</h2>
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 text-center">
-                <div class="glass rounded-lg p-4 flex flex-col items-center">
-                    <i class="fas fa-code text-3xl text-amber-500 mb-2"></i>
-                    <p class="font-semibold">Languages</p>
-                    <span class="text-sm text-gray-600 dark:text-gray-300">C, Java, Python, JavaScript</span>
-                </div>
-                <div class="glass rounded-lg p-4 flex flex-col items-center">
-                    <i class="fas fa-tools text-3xl text-amber-500 mb-2"></i>
-                    <p class="font-semibold">Tools</p>
-                    <span class="text-sm text-gray-600 dark:text-gray-300">Git, VS Code, Linux</span>
-                </div>
-                <div class="glass rounded-lg p-4 flex flex-col items-center">
-                    <i class="fas fa-cubes text-3xl text-amber-500 mb-2"></i>
-                    <p class="font-semibold">Frameworks</p>
-                    <span class="text-sm text-gray-600 dark:text-gray-300">React, Next.js, Tailwind CSS, Flask</span>
-                </div>
-                <div class="glass rounded-lg p-4 flex flex-col items-center">
-                    <i class="fas fa-robot text-3xl text-amber-500 mb-2"></i>
-                    <p class="font-semibold">AI/CV Libraries</p>
-                    <span class="text-sm text-gray-600 dark:text-gray-300">OpenCV, MediaPipe</span>
-                </div>
-                <div class="glass rounded-lg p-4 flex flex-col items-center">
-                    <i class="fas fa-users text-3xl text-amber-500 mb-2"></i>
-                    <p class="font-semibold">Soft Skills</p>
-                    <span class="text-sm text-gray-600 dark:text-gray-300">Leadership, Teamwork, Communication</span>
-                </div>
-            </div>
-        </section>
+<!-- EXPERIENCE -->
+<section id="experience" class="max-w-6xl mx-auto px-6 py-20">
+  <h2 class="text-4xl font-bold text-center mb-14">Experience</h2>
 
-        <!-- Experience Section -->
-        <section id="experience" class="mb-8 reveal">
-            <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12 headline">Experience</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 timeline">
-                <!-- Placeholder for Experience 1 -->
-                <div class="glass rounded-xl p-6 timeline-item">
-                    <h3 class="text-xl font-bold">Software Engineering Intern</h3>
-                    <p class="text-gray-700 dark:text-gray-300 font-semibold mb-1">Next gen Edunet</p>
-                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">October 2024 - November 2024</p>
-                    <p class="text-gray-700 dark:text-gray-200">
-                        Assisted in the development of a new web application feature using React and Node.js.
-                        Collaborated with a team of engineers to write clean, maintainable code and participated in daily stand-ups and code reviews.
-                    </p>
-                </div>
-                <!-- Placeholder for Experience 2 -->
-                <div class="glass rounded-xl p-6 timeline-item">
-                    <h3 class="text-xl font-bold">Web Development Trainee</h3>
-                    <p class="text-gray-700 dark:text-gray-300 font-semibold mb-1">Digital Agency</p>
-                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">January 2023 - May 2023</p>
-                    <p class="text-gray-700 dark:text-gray-200">
-                        Learned modern web development practices including responsive design and API integration.
-                        Contributed to the front-end development of client websites using HTML, CSS, and JavaScript.
-                    </p>
-                </div>
-            </div>
-        </section>
+  <div class="space-y-8">
 
-        <!-- Resume Section -->
-        <section id="resume" class="flex flex-col items-center justify-center text-center p-8 md:p-12 mb-8 reveal">
-            <h2 class="text-3xl sm:text-4xl font-bold mb-6 headline">Resume</h2>
-            <p class="text-lg text-gray-700 dark:text-gray-300 mb-6">Download my full resume to learn more about my experience and skills.</p>
-            <a href="https://bhaskpand.github.io/resume.pdf"
-                class="inline-block px-8 py-3 bg-amber-600 text-white font-semibold rounded-full btn-cta"
-                target="_blank" rel="noopener noreferrer">
-                <i class="fas fa-file-download mr-2"></i>Download Resume (PDF)
-            </a>
-        </section>
+    <!-- DRDO -->
+    <div class="glass rounded-xl p-6 flex gap-6 items-start">
+      <img src="https://upload.wikimedia.org/wikipedia/en/6/6b/Defence_Research_and_Development_Organisation_Logo.png"
+           class="w-16 h-16 object-contain">
+      <div>
+        <h3 class="text-xl font-bold">AI/ML Intern</h3>
+        <p class="font-semibold text-gray-700">
+          Defence Research and Development Organisation (DRDO)
+        </p>
+        <p class="text-sm text-gray-500">
+          Jan 2026 – Present · Bengaluru · On-site
+        </p>
+      </div>
+    </div>
 
-        <!-- Send Me a Message Section -->
-        <section id="message" class="glass rounded-xl p-8 md:p-12 mb-8 reveal">
-            <h2 class="text-3xl sm:text-4xl font-bold text-center mb-8 headline">Send Me a Message</h2>
-            <p class="text-lg text-gray-700 dark:text-gray-200 text-center mb-8 max-w-2xl mx-auto">
-                Have a question or want to collaborate? I'd love to hear from you! Please fill out the form below.
-            </p>
-            <form action="mailto:bhaskarpanditmn@gmail.com" method="post" enctype="text/plain" class="max-w-xl mx-auto space-y-6">
-                <div class="field">
-                    <input type="text" id="name" name="name" placeholder=" "
-                        class="w-full px-4 py-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500" required>
-                    <label for="name">Name</label>
-                </div>
-                <div class="field">
-                    <input type="email" id="email" name="email" placeholder=" "
-                        class="w-full px-4 py-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500" required>
-                    <label for="email">Email</label>
-                </div>
-                <div class="field">
-                    <textarea id="message" name="message" rows="6" placeholder=" "
-                        class="w-full px-4 py-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 resize-none" required></textarea>
-                    <label for="message">Message</label>
-                </div>
-                <div class="text-center">
-                    <button type="submit"
-                        class="px-8 py-3 bg-amber-600 text-white font-semibold rounded-full btn-cta">
-                        Send Message
-                    </button>
-                </div>
-            </form>
-        </section>
+    <!-- M.S. Innovations -->
+    <div class="glass rounded-xl p-6 flex gap-6 items-start">
+      <img src="https://placehold.co/80x80?text=MS"
+           class="w-16 h-16 rounded-lg">
+      <div>
+        <h3 class="text-xl font-bold">Software Developer</h3>
+        <p class="font-semibold text-gray-700">M.S. Innovations · Part-time</p>
+        <p class="text-sm text-gray-500">
+          Jan 2026 – Present · Bengaluru · Remote
+        </p>
+        <p class="text-sm mt-2 text-gray-600">
+          React.js, Software Development
+        </p>
+      </div>
+    </div>
 
-        <!-- Contact Section -->
-        <section id="contact" class="glass rounded-xl p-8 md:p-12 mb-8 text-center reveal">
-            <h2 class="text-3xl sm:text-4xl font-bold mb-6 headline">Contact</h2>
-            <p class="text-lg text-gray-700 dark:text-gray-200 mb-8">Feel free to connect with me on any of these platforms!</p>
-            <div class="flex justify-center space-x-6 sm:space-x-8 text-4xl text-gray-600 dark:text-gray-300">
-                <a href="mailto:bhaskarpanditmn@gmail.com" aria-label="Email"
-                    class="hover:text-amber-600 transition duration-300 transform hover:scale-110">
-                    <i class="fas fa-envelope"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/bhaskar-pandit-m-n-67401a29b/" target="_blank"
-                    aria-label="LinkedIn" class="hover:text-amber-600 transition duration-300 transform hover:scale-110">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-                <a href="https://github.com/BhaskPand" target="_blank" aria-label="GitHub"
-                    class="hover:text-amber-600 transition duration-300 transform hover:scale-110">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://www.instagram.com/bhaskar_pandit__" target="_blank" aria-label="Instagram"
-                    class="hover:text-amber-600 transition duration-300 transform hover:scale-110">
-                    <i class="fab fa-instagram"></i>
-                </a>
-            </div>
-        </section>
-    </main>
+    <!-- KLS Tech Solutions -->
+    <div class="glass rounded-xl p-6 flex gap-6 items-start">
+      <img src="https://placehold.co/80x80?text=KLS"
+           class="w-16 h-16 rounded-lg">
+      <div>
+        <h3 class="text-xl font-bold">Software Developer</h3>
+        <p class="font-semibold text-gray-700">KLS Tech Solutions · Part-time</p>
+        <p class="text-sm text-gray-500">
+          Sep 2025 – Present · Bengaluru · Remote
+        </p>
+        <p class="text-sm mt-2 text-gray-600">Leadership</p>
+      </div>
+    </div>
 
-    <!-- Footer -->
-    <footer class="text-white text-center py-6 mt-12">
-        <div class="container mx-auto px-4">
-            <p class="text-gray-300">&copy; 2024 Bhaskar Pandit M N. All Rights Reserved.</p>
-        </div>
-    </footer>
-    <script src="admin.js"></script>
-    <script src="script.js"></script>
-    <script>
-        // Load and render projects
-        function renderProjects() {
-            const projects = projectManager.getProjects();
-            const container = document.getElementById('projectsContainer');
+    <!-- Soul AI -->
+    <div class="glass rounded-xl p-6 flex gap-6 items-start">
+      <img src="https://placehold.co/80x80?text=AI"
+           class="w-16 h-16 rounded-lg">
+      <div>
+        <h3 class="text-xl font-bold">AI Associate</h3>
+        <p class="font-semibold text-gray-700">Soul AI · Freelance</p>
+        <p class="text-sm text-gray-500">
+          Mar 2025 – May 2025 · Bengaluru · Remote
+        </p>
+        <p class="text-sm mt-2 text-gray-600">
+          AI model development, ML optimization, creative problem solving
+        </p>
+      </div>
+    </div>
 
-            if (projects.length === 0) {
-                container.innerHTML = '<p class="text-center text-gray-600 dark:text-gray-400 col-span-full">No projects available yet.</p>';
-                return;
-            }
+    <!-- Edunet -->
+    <div class="glass rounded-xl p-6 flex gap-6 items-start">
+      <img src="https://placehold.co/80x80?text=Edu"
+           class="w-16 h-16 rounded-lg">
+      <div>
+        <h3 class="text-xl font-bold">Full Stack Development Trainee</h3>
+        <p class="font-semibold text-gray-700">Edunet Foundation</p>
+        <p class="text-sm text-gray-500">
+          Oct 2024 – Mar 2025 · Bengaluru · On-site
+        </p>
+        <p class="text-sm mt-2 text-gray-600">
+          MERN Stack, HTML, CSS, JavaScript
+        </p>
+      </div>
+    </div>
 
-            container.innerHTML = projects.map(project => {
-                const featuresHtml = project.features && project.features.length > 0
-                    ? `<ul class="list-disc list-inside text-sm text-gray-600 dark:text-gray-400 mb-4 ml-4">
-                        ${project.features.map(f => `<li>${f}</li>`).join('')}
-                    </ul>`
-                    : '';
+  </div>
+</section>
 
-                const buttonsHtml = [
-                    project.demoUrl ? `
-                        <a href="${project.demoUrl}"
-                            class="inline-block bg-amber-600 text-white text-sm font-semibold py-2 px-4 rounded-full shadow-md hover:bg-amber-700 transition transform hover:scale-105"
-                            target="_blank" rel="noopener noreferrer">
-                            <i class="fas fa-external-link-alt mr-2"></i>${project.demoText || 'Live Demo'}
-                        </a>
-                    ` : '',
-                    project.adminUrl ? `
-                        <a href="${project.adminUrl}"
-                            class="inline-block bg-amber-600 text-white text-sm font-semibold py-2 px-4 rounded-full shadow-md hover:bg-amber-700 transition transform hover:scale-105"
-                            target="_blank" rel="noopener noreferrer">
-                            <i class="fas fa-chart-line mr-2"></i>Admin Page
-                        </a>
-                    ` : '',
-                    project.githubUrl ? `
-                        <a href="${project.githubUrl}"
-                            class="inline-block bg-gray-800 text-white text-sm font-semibold py-2 px-4 rounded-full shadow-md hover:bg-gray-700 transition transform hover:scale-105"
-                            target="_blank" rel="noopener noreferrer">
-                            <i class="fab fa-github mr-2"></i>View on GitHub
-                        </a>
-                    ` : ''
-                ].filter(Boolean).join('');
+<!-- CONTACT -->
+<section id="contact" class="py-20 text-center">
+  <h2 class="text-4xl font-bold mb-6">Contact</h2>
+  <div class="flex justify-center space-x-8 text-3xl text-gray-600">
+    <a href="mailto:bhaskarpanditmn@gmail.com"><i class="fas fa-envelope"></i></a>
+    <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+    <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+  </div>
+</section>
 
-                return `
-                    <div class="glass rounded-xl p-6 tilt">
-                        <h3 class="text-xl font-bold mb-2">${project.icon ? project.icon + ' ' : ''}${project.title}</h3>
-                        <p class="text-gray-700 dark:text-gray-300 mb-4">${project.description}</p>
-                        ${featuresHtml}
-                        ${buttonsHtml ? `<div class="flex flex-wrap gap-2">${buttonsHtml}</div>` : ''}
-                    </div>
-                `;
-            }).join('');
+<footer class="text-center py-6 text-gray-500">
+  © 2026 Bhaskar Pandit. All rights reserved.
+</footer>
 
-            // Re-initialize tilt effect for new cards
-            const tiltCards = Array.from(document.querySelectorAll('.tilt'));
-            tiltCards.forEach((card) => {
-                const rectCache = { w: 0, h: 0 };
-                const updateRect = () => {
-                    const r = card.getBoundingClientRect();
-                    rectCache.w = r.width; rectCache.h = r.height;
-                };
-                updateRect();
-                window.addEventListener('resize', updateRect);
-
-                card.addEventListener('mousemove', (e) => {
-                    const r = card.getBoundingClientRect();
-                    const x = e.clientX - r.left;
-                    const y = e.clientY - r.top;
-                    const rx = ((y - rectCache.h / 2) / rectCache.h) * -6;
-                    const ry = ((x - rectCache.w / 2) / rectCache.w) * 6;
-                    card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-2px)`;
-                });
-                card.addEventListener('mouseleave', () => {
-                    card.style.transform = '';
-                });
-            });
-        }
-
-        // Initialize default projects if none exist
-        function initDefaultProjects() {
-            const projects = projectManager.getProjects();
-            if (projects.length === 0) {
-                const defaultProjects = [
-                    {
-                        title: 'RealMeta - Museum Painting Scanner',
-                        icon: '🖼️',
-                        description: 'A **no-login, camera-based museum painting scanner**. Point your phone, capture, and get instant rich information (text + audio, offline-ready). Includes a simple guided tour queue and anonymous analytics.',
-                        features: ['No login — immediate use', 'Camera capture and scan-based lookup (pHash)', 'Offline-ready via Service Worker', 'Rich info with TTS audio fallback'],
-                        demoUrl: 'https://realmeta-museum.onrender.com',
-                        demoText: 'Live Demo (Main)',
-                        adminUrl: 'https://realmeta-museum.onrender.com/admin',
-                        githubUrl: 'https://github.com/BhaskPand/RealMeta_Museum'
-                    },
-                    {
-                        title: 'Smart Attendance System',
-                        icon: '🧠',
-                        description: 'An AI-powered attendance management application that automatically marks student attendance using facial recognition through a live camera feed. This project is built using Python, Flask, OpenCV, and MediaPipe, offering a seamless, contactless attendance solution.',
-                        demoUrl: 'https://smart-attendance-system-mc31.onrender.com',
-                        demoText: 'View Demo',
-                        githubUrl: 'https://github.com/BhaskPand/Smart-Attendance-System.git'
-                    },
-                    {
-                        title: 'Smart Glasses for Visually Impaired',
-                        icon: '',
-                        description: 'A wearable assistive device using ESP32, ultrasonic sensors, and audio feedback to help visually impaired users detect obstacles in real-time.',
-                        githubUrl: 'https://github.com/BhaskPand/SmartGalass'
-                    },
-                    {
-                        title: 'Prajñā AI (Smart Glasses & Stick)',
-                        icon: '',
-                        description: 'A groundbreaking, dual-purpose assistive technology combining ESP32 with AI for real-time object detection (Smart Glasses) and navigation assistance (Smart Stick).',
-                        githubUrl: 'https://github.com/BhaskPand/Prajna-AI-blindStick-'
-                    },
-                    {
-                        title: 'ExamsAI – Competitive Exams Hub',
-                        icon: '',
-                        description: 'Built a full-stack AI-integrated web application as part of the Full Stack Developer Assessment by Bhatiyani Astute Intelligence Pvt. Ltd.',
-                        demoUrl: 'https://exams-ai-bhatiyani.vercel.app/',
-                        demoText: 'Live Demo',
-                        githubUrl: 'https://github.com/BhaskPand/ExamsAI_bhatiyani'
-                    },
-                    {
-                        title: 'Job Portal (MERN)',
-                        icon: '',
-                        description: 'A job portal built with the MERN stack featuring role-based access, job postings, applications, and admin workflows.',
-                        githubUrl: 'https://github.com/BhaskPand/Job-Portal-MERN-Project'
-                    },
-                    {
-                        title: 'Portfolio Website',
-                        icon: '',
-                        description: 'A personal portfolio website using Next.js and Tailwind CSS to showcase skills, projects, and contact details.',
-                        githubUrl: 'https://github.com/BhaskPand/Myportfolio.git'
-                    }
-                ];
-                defaultProjects.forEach(project => projectManager.addProject(project));
-            }
-        }
-
-        // Initialize and render on page load
-        initDefaultProjects();
-        renderProjects();
-    </script>
 </body>
-
 </html>
