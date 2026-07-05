@@ -1,32 +1,4 @@
-/* Portfolio interactions — no dependencies. */
-
-// ---------- Theme (dark-first, persisted, respects system) ----------
-(function initTheme() {
-  const root = document.documentElement;
-  const btn = document.getElementById('themeToggle');
-
-  const apply = (theme) => {
-    if (theme === 'light') root.setAttribute('data-theme', 'light');
-    else root.removeAttribute('data-theme');
-    if (btn) btn.setAttribute('aria-pressed', String(theme === 'light'));
-  };
-
-  const stored = localStorage.getItem('theme');
-  const systemLight = window.matchMedia('(prefers-color-scheme: light)').matches;
-  apply(stored || (systemLight ? 'light' : 'dark'));
-
-  if (btn) {
-    btn.addEventListener('click', () => {
-      const next = root.hasAttribute('data-theme') ? 'dark' : 'light';
-      apply(next);
-      localStorage.setItem('theme', next);
-    });
-  }
-
-  window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', (e) => {
-    if (!localStorage.getItem('theme')) apply(e.matches ? 'light' : 'dark');
-  });
-})();
+/* Portfolio interactions — no dependencies. Dark cinematic edition. */
 
 // ---------- Sticky nav background ----------
 const nav = document.getElementById('nav');
